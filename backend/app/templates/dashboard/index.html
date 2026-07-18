@@ -1,0 +1,95 @@
+{% extends "dashboard/layout.html" %}
+
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<h1>
+    Bienvenido al Panel Administrativo
+</h1>
+
+
+<p>
+    Hola {{ session["nombre"] }},
+    desde aquí podrás administrar el contenido del Jardín Infantil La Florida.
+</p>
+
+
+<div class="row">
+
+
+    <div class="col-md-4">
+
+        <div class="card">
+
+            <div class="card-body">
+
+                <h5 class="card-title">
+                    Noticias
+                </h5>
+
+                <p>
+                    Gestionar publicaciones del portal web.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="col-md-4">
+
+        <div class="card">
+
+            <div class="card-body">
+
+                <h5 class="card-title">
+                    Eventos
+                </h5>
+
+                <p>
+                    Administrar eventos del jardín.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="col-md-4">
+
+        <div class="card">
+
+            <div class="card-body">
+
+                <h5 class="card-title">
+                    Galería
+                </h5>
+
+                <p>
+                    Administrar imágenes.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+{% endblock %}

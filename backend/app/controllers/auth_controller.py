@@ -23,40 +23,65 @@ class AuthController:
         correo = request.form.get("correo")
         password = request.form.get("password")
 
+
         # Buscar usuario
         usuario = UsuarioModel.obtener_por_correo(correo)
+
+
+        
+
 
         # Validar que exista
         if not usuario:
             flash("Correo o contraseña incorrectos.", "danger")
             return redirect(url_for("auth.mostrar_login"))
 
+
         # Validar estado
         if usuario["estado"] != "ACTIVO":
             flash("El usuario está inactivo.", "warning")
             return redirect(url_for("auth.mostrar_login"))
 
+
+
         # Validar contraseña
-        if not check_password_hash(usuario["password"], password):
+
+        resultado_password = check_password_hash(
+            usuario["password"],
+            password
+        )
+
+
+        
+
+
+        if not resultado_password:
             flash("Correo o contraseña incorrectos.", "danger")
             return redirect(url_for("auth.mostrar_login"))
+
+
 
         # Crear sesión
         session["usuario_id"] = usuario["id"]
         session["nombre"] = usuario["nombres"]
         session["rol"] = usuario["rol"]
 
+
         # Actualizar último acceso
         UsuarioModel.actualizar_ultimo_acceso(usuario["id"])
+
 
         # Redireccionar
         return redirect(url_for("dashboard"))
 
 
+
     @staticmethod
     def logout():
         """
-        Cierra la sesión.
+        Cierra sesión.
         """
+
         session.clear()
+
         return redirect(url_for("auth.mostrar_login"))

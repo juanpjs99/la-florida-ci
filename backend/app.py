@@ -31,7 +31,7 @@ def dashboard():
     if "usuario_id" not in session:
         return redirect(url_for("auth.mostrar_login"))
 
-    return render_template("dashboard.html")
+    return render_template("dashboard/index.html")
 
 @app.route("/test-db")
 def test_db():
