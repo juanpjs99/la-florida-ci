@@ -1,3 +1,8 @@
+Fuentes:
+- Nunito: texto/párrafos
+- Comfortaa: títulos y botones
+- Bangers: títulos destacados (alternativa)
+
 Paleta de colores:
 
 PRINCIPALES: 
