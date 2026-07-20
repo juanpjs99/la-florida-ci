@@ -1,37 +1,43 @@
-<div class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+<div class="col-md-3 col-lg-2 d-md-block dashboard-sidebar">
 
     <div class="position-sticky pt-3">
 
+        <div class="sidebar-header">
+            Navegación
+        </div>
+
         <ul class="nav flex-column">
 
-
             <li class="nav-item">
-                <a class="nav-link" href="/dashboard">
+                <a class="nav-link {% if request.path == '/dashboard' %}active{% endif %}" href="/dashboard">
+                    <i class="bi bi-house-door"></i>
                     Inicio
                 </a>
             </li>
 
-
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link {% if request.path.startswith('/dashboard/noticias') %}active{% endif %}" href="#">
+                    <!-- TODO: reemplazar href con url_for('noticias.index') -->
+                    <i class="bi bi-newspaper"></i>
                     Noticias
                 </a>
             </li>
 
-
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link {% if request.path.startswith('/dashboard/eventos') %}active{% endif %}" href="#">
+                    <!-- TODO: reemplazar href con url_for('eventos.index') -->
+                    <i class="bi bi-calendar-event"></i>
                     Eventos
                 </a>
             </li>
 
-
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link {% if request.path.startswith('/dashboard/galeria') %}active{% endif %}" href="#">
+                    <!-- TODO: reemplazar href con url_for('galeria.index') -->
+                    <i class="bi bi-images"></i>
                     Galería
                 </a>
             </li>
-
 
         </ul>
 

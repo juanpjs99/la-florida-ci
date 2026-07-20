@@ -1,0 +1,308 @@
+:root {
+  --primary: #492A93;
+  --secondary: #DEE135;
+  --complementary: #ABC0EC;
+  --bg-light: #EFF2F5;
+  --font-heading: 'Comfortaa', sans-serif;
+  --font-body: 'Nunito', sans-serif;
+  --font-display: 'Bangers', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-light);
+}
+
+h1, h2, h3, h4, h5, h6,
+.card-title {
+  font-family: var(--font-heading);
+}
+
+/* ─── Dashboard header ─── */
+
+.dashboard-header h1 {
+  font-family: var(--font-display);
+  color: var(--primary);
+  letter-spacing: 1px;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.dashboard-header p {
+  font-family: var(--font-body);
+  color: #6c757d;
+}
+
+/* ─── Stat cards ─── */
+
+.stat-card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.stat-card .stat-label {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #adb5bd;
+  margin-bottom: 0.25rem;
+}
+
+.stat-card .stat-number {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* ─── Module cards (lanchpad) ─── */
+
+a.dashboard-card {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+a.dashboard-card:hover {
+  transform: translateY(-4px);
+  text-decoration: none;
+  color: inherit;
+}
+
+.dashboard-card .card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  overflow: hidden;
+  height: 100%;
+}
+
+.dashboard-card .card-body {
+  padding: 1.75rem 1.5rem;
+}
+
+/* Top border accent per module */
+.dashboard-card.card-noticias .card {
+  border-top: 4px solid var(--primary);
+}
+
+.dashboard-card.card-eventos .card {
+  border-top: 4px solid var(--secondary);
+}
+
+.dashboard-card.card-galeria .card {
+  border-top: 4px solid var(--complementary);
+}
+
+/* Icon circle */
+.dashboard-card .card-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.dashboard-card.card-noticias .card-icon {
+  background-color: rgba(73, 42, 147, 0.1);
+  color: var(--primary);
+}
+
+.dashboard-card.card-eventos .card-icon {
+  background-color: rgba(222, 225, 53, 0.15);
+  color: #999c00;
+}
+
+.dashboard-card.card-galeria .card-icon {
+  background-color: rgba(171, 192, 236, 0.25);
+  color: #3a6bb5;
+}
+
+/* Title */
+.dashboard-card .card-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+/* Description */
+.dashboard-card .card-text {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+/* Badge / counter pill */
+.dashboard-card .card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.3rem 0.85rem;
+  border-radius: 20px;
+  margin-top: 1.25rem;
+}
+
+.dashboard-card.card-noticias .card-badge {
+  background-color: rgba(73, 42, 147, 0.08);
+  color: var(--primary);
+}
+
+.dashboard-card.card-eventos .card-badge {
+  background-color: rgba(222, 225, 53, 0.15);
+  color: #7a7d00;
+}
+
+.dashboard-card.card-galeria .card-badge {
+  background-color: rgba(171, 192, 236, 0.25);
+  color: #2a5298;
+}
+
+.dashboard-card.card-noticias:hover .card {
+  box-shadow: 0 8px 24px rgba(73, 42, 147, 0.15);
+}
+
+.dashboard-card.card-eventos:hover .card {
+  box-shadow: 0 8px 24px rgba(222, 225, 53, 0.2);
+}
+
+.dashboard-card.card-galeria:hover .card {
+  box-shadow: 0 8px 24px rgba(171, 192, 236, 0.25);
+}
+
+
+/* ─── Navbar ─── */
+
+.dashboard-navbar {
+  background-color: var(--primary) !important;
+  padding: 0.65rem 1rem;
+  box-shadow: 0 2px 12px rgba(73, 42, 147, 0.15);
+}
+
+.dashboard-navbar .navbar-brand {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dashboard-navbar .navbar-brand i {
+  font-size: 1.4rem;
+  color: var(--secondary);
+}
+
+.dashboard-navbar .user-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dashboard-navbar .user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+}
+
+.dashboard-navbar .user-info i {
+  font-size: 1.2rem;
+  color: var(--secondary);
+}
+
+.dashboard-navbar .logout-link {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.dashboard-navbar .logout-link:hover {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+
+/* ─── Sidebar ─── */
+
+.dashboard-sidebar {
+  background-color: white;
+  border-right: 1px solid rgba(0, 0, 0, 0.04);
+  min-height: calc(100vh - 60px);
+}
+
+.dashboard-sidebar .sidebar-header {
+  padding: 1.25rem 1.5rem 0.5rem;
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #adb5bd;
+}
+
+.dashboard-sidebar .nav {
+  padding: 0 0.75rem;
+}
+
+.dashboard-sidebar .nav-link {
+  font-family: var(--font-body);
+  font-weight: 500;
+  color: #495057;
+  padding: 0.6rem 0.75rem;
+  border-radius: 10px;
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.15s ease;
+  font-size: 0.9rem;
+}
+
+.dashboard-sidebar .nav-link i {
+  font-size: 1.15rem;
+  color: #adb5bd;
+  transition: color 0.15s ease;
+  width: 1.25rem;
+  text-align: center;
+}
+
+.dashboard-sidebar .nav-link:hover {
+  background-color: rgba(73, 42, 147, 0.06);
+  color: var(--primary);
+}
+
+.dashboard-sidebar .nav-link:hover i {
+  color: var(--primary);
+}
+
+.dashboard-sidebar .nav-link.active {
+  background-color: var(--primary);
+  color: white;
+}
+
+.dashboard-sidebar .nav-link.active i {
+  color: white;
+}

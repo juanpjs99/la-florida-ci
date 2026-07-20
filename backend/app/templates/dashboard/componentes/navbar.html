@@ -1,19 +1,21 @@
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-dark dashboard-navbar">
 
     <div class="container-fluid">
 
         <span class="navbar-brand">
+            <i class="bi bi-flower1"></i>
             Jardín Infantil La Florida
         </span>
 
+        <div class="user-section">
 
-        <div class="text-white">
+            <span class="user-info">
+                <i class="bi bi-person-circle"></i>
+                {{ session["nombre"] }}
+            </span>
 
-            {{ session["nombre"] }}
-
-            |
-
-            <a href="/logout" class="text-white">
+            <a href="/logout" class="logout-link">
+                <i class="bi bi-box-arrow-right"></i>
                 Salir
             </a>
 

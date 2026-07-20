@@ -10,86 +10,166 @@ Dashboard
 {% block content %}
 
 
-<h1>
-    Bienvenido al Panel Administrativo
-</h1>
+<!-- ─── Header ─── -->
+<div class="dashboard-header d-flex justify-content-between align-items-center mb-4">
 
-
-<p>
-    Hola {{ session["nombre"] }},
-    desde aquí podrás administrar el contenido del Jardín Infantil La Florida.
-</p>
-
-
-<div class="row">
-
-
-    <div class="col-md-4">
-
-        <div class="card">
-
-            <div class="card-body">
-
-                <h5 class="card-title">
-                    Noticias
-                </h5>
-
-                <p>
-                    Gestionar publicaciones del portal web.
-                </p>
-
-            </div>
-
-        </div>
-
+    <div>
+        <h1>Bienvenido, {{ session["nombre"] }}</h1>
+        <p class="mb-0">Panel de administración del Jardín Infantil La Florida</p>
     </div>
 
-
-
-    <div class="col-md-4">
-
-        <div class="card">
-
-            <div class="card-body">
-
-                <h5 class="card-title">
-                    Eventos
-                </h5>
-
-                <p>
-                    Administrar eventos del jardín.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-
-    <div class="col-md-4">
-
-        <div class="card">
-
-            <div class="card-body">
-
-                <h5 class="card-title">
-                    Galería
-                </h5>
-
-                <p>
-                    Administrar imágenes.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
+    <!-- TODO: botón de acción rápida (ej. "Nueva noticia") o reloj -->
 
 </div>
+
+
+<!-- ─── Fila de métricas ─── -->
+<div class="row mb-4 g-3 justify-content-center">
+
+    <div class="col-md-4 col-6">
+        <div class="card stat-card">
+            <div class="card-body">
+                <div class="stat-label">Noticias</div>
+                <div class="stat-number">
+                    {{ stats.noticias or 0 }}
+                    <!-- TODO: reemplazar con variable real del backend -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 col-6">
+        <div class="card stat-card">
+            <div class="card-body">
+                <div class="stat-label">Eventos</div>
+                <div class="stat-number">
+                    {{ stats.eventos or 0 }}
+                    <!-- TODO: reemplazar con variable real del backend -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 col-6">
+        <div class="card stat-card">
+            <div class="card-body">
+                <div class="stat-label">Galería</div>
+                <div class="stat-number">
+                    {{ stats.galeria or 0 }}
+                    <!-- TODO: reemplazar con variable real del backend -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- ─── Tarjetas de módulos (launchpad) ─── -->
+<div class="row g-4">
+
+    <!-- ──── Noticias ──── -->
+    <div class="col-md-4">
+
+        <a href="#" class="dashboard-card card-noticias">
+            <!-- TODO: reemplazar href con url_for('noticias.index') -->
+
+            <div class="card">
+                <div class="card-body">
+
+                    <div class="card-icon">
+                        <i class="bi bi-newspaper"></i>
+                    </div>
+
+                    <h5 class="card-title">Noticias</h5>
+
+                    <p class="card-text">
+                        Gestionar publicaciones del portal web.
+                    </p>
+
+                    <span class="card-badge">
+                        <i class="bi bi-file-text"></i>
+                        {{ stats.noticias or 0 }} artículos
+                        <!-- TODO: conectar con contador real del backend -->
+                    </span>
+
+                </div>
+            </div>
+
+        </a>
+
+    </div>
+
+
+    <!-- ──── Eventos ──── -->
+    <div class="col-md-4">
+
+        <a href="#" class="dashboard-card card-eventos">
+            <!-- TODO: reemplazar href con url_for('eventos.index') -->
+
+            <div class="card">
+                <div class="card-body">
+
+                    <div class="card-icon">
+                        <i class="bi bi-calendar-event"></i>
+                    </div>
+
+                    <h5 class="card-title">Eventos</h5>
+
+                    <p class="card-text">
+                        Administrar eventos del jardín.
+                    </p>
+
+                    <span class="card-badge">
+                        <i class="bi bi-calendar-week"></i>
+                        {{ stats.eventos or 0 }} eventos
+                        <!-- TODO: conectar con contador real del backend -->
+                    </span>
+
+                </div>
+            </div>
+
+        </a>
+
+    </div>
+
+
+    <!-- ──── Galería ──── -->
+    <div class="col-md-4">
+
+        <a href="#" class="dashboard-card card-galeria">
+            <!-- TODO: reemplazar href con url_for('galeria.index') -->
+
+            <div class="card">
+                <div class="card-body">
+
+                    <div class="card-icon">
+                        <i class="bi bi-images"></i>
+                    </div>
+
+                    <h5 class="card-title">Galería</h5>
+
+                    <p class="card-text">
+                        Administrar imágenes.
+                    </p>
+
+                    <span class="card-badge">
+                        <i class="bi bi-image"></i>
+                        {{ stats.galeria or 0 }} imágenes
+                        <!-- TODO: conectar con contador real del backend -->
+                    </span>
+
+                </div>
+            </div>
+
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- TODO: futuras secciones (ej. Usuarios, Configuración del sitio) -->
 
 
 {% endblock %}
