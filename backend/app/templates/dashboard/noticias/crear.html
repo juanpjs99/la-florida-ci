@@ -1,0 +1,85 @@
+{% extends "dashboard/layout.html" %}
+
+{% block content %}
+
+<h2>Nueva noticia</h2>
+
+<form action="{{ url_for('noticia.guardar') }}"
+        method="POST"
+        enctype="multipart/form-data">
+
+    <div>
+        <label>Título</label>
+        <input
+            type="text"
+            name="titulo"
+            required
+        >
+    </div>
+
+    <br>
+
+    <div>
+        <label>Resumen</label>
+
+        <textarea
+            name="resumen"
+            rows="3">
+        </textarea>
+
+    </div>
+
+    <br>
+
+    <div>
+
+        <label>Contenido</label>
+
+        <textarea
+            name="contenido"
+            rows="10"
+            required>
+        </textarea>
+
+    </div>
+
+    <br>
+    <div class="mb-3">
+        <label for="imagen">Imagen</label>
+        <input type="file" 
+                name="imagen" 
+                id="imagen" 
+                accept=".jpg,.jpeg,.png,.webp">
+    </div>
+
+    <div>
+
+        <label>Estado</label>
+
+        <select name="estado">
+
+            <option value="BORRADOR">
+                Borrador
+            </option>
+
+            <option value="PUBLICADA">
+                Publicada
+            </option>
+
+            <option value="OCULTA">
+                Oculta
+            </option>
+
+        </select>
+
+    </div>
+
+    <br>
+
+    <button type="submit">
+        Guardar noticia
+    </button>
+
+</form>
+
+{% endblock %}

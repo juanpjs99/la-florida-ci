@@ -1,0 +1,71 @@
+{% extends "dashboard/layout.html" %}
+
+{% block content %}
+
+<h2>Editar noticia</h2>
+
+<form action="{{ url_for('noticia.actualizar', id=noticia.id) }}" method="POST">
+
+    <div class="mb-3">
+        <label>Título</label><br>
+        <input
+            type="text"
+            name="titulo"
+            value="{{ noticia.titulo }}"
+            required
+            style="width:500px;">
+    </div>
+
+    <div class="mb-3">
+        <label>Resumen</label><br>
+        <textarea
+            name="resumen"
+            rows="4"
+            style="width:500px;">{{ noticia.resumen }}</textarea>
+    </div>
+
+    <div class="mb-3">
+        <label>Contenido</label><br>
+        <textarea
+            name="contenido"
+            rows="10"
+            style="width:500px;"
+            required>{{ noticia.contenido }}</textarea>
+    </div>
+
+    <div class="mb-3">
+        <label>Estado</label><br>
+
+        <select name="estado">
+
+            <option value="BORRADOR"
+                {% if noticia.estado=="BORRADOR" %}selected{% endif %}>
+                Borrador
+            </option>
+
+            <option value="PUBLICADA"
+                {% if noticia.estado=="PUBLICADA" %}selected{% endif %}>
+                Publicada
+            </option>
+
+            <option value="OCULTA"
+                {% if noticia.estado=="OCULTA" %}selected{% endif %}>
+                Oculta
+            </option>
+
+        </select>
+
+    </div>
+
+    <button class="btn btn-primary">
+        Actualizar noticia
+    </button>
+
+    <a href="{{ url_for('noticia.listar') }}"
+       class="btn btn-secondary">
+        Cancelar
+    </a>
+
+</form>
+
+{% endblock %}

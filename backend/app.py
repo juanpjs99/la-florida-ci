@@ -3,6 +3,7 @@ from flask import Flask, render_template, session, redirect, url_for
 from config import Config
 from app.database.db import mysql
 from app.routes.auth_routes import auth
+from app.routes.noticia_routes import noticia
 
 app = Flask(
     __name__,
@@ -15,8 +16,10 @@ mysql.init_app(app)
 
 #registrar blueprint de rutas de autenticación
 app.register_blueprint(auth)
+#registrar blueprint de rutas de noticias
+app.register_blueprint(noticia)
 
-
+    
 
 
 @app.route("/")

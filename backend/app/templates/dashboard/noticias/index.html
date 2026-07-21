@@ -1,0 +1,89 @@
+{% extends "dashboard/layout.html" %}
+
+{% block content %}
+
+<h2>Listado de Noticias</h2>
+
+<div class="mb-3">
+    <a href="{{ url_for('noticia.mostrar_crear') }}"
+       class="btn btn-primary">
+        + Nueva noticia
+    </a>
+</div>
+
+<table border="1" cellpadding="10">
+
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Imagen</th>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        {% for noticia in noticias %}
+
+        <tr>
+
+            <td>{{ noticia.id }}</td>
+
+            <td>
+
+                {% if noticia.imagen %}
+
+                    <img
+                        src="{{ url_for('static', filename='uploads/noticias/' ~ noticia.imagen) }}"
+                        width="120"
+                        alt="Imagen noticia">
+
+                {% else %}
+
+                    Sin imagen
+
+                {% endif %}
+
+            </td>
+
+            <td>{{ noticia.titulo }}</td>
+
+            <td>{{ noticia.autor }}</td>
+
+            <td>{{ noticia.estado }}</td>
+
+            <td>
+
+                <a href="{{ url_for('noticia.editar', id=noticia.id) }}"
+                   class="btn btn-warning btn-sm">
+                    Editar
+                </a>
+
+                <a href="{{ url_for('noticia.eliminar', id=noticia.id) }}"
+                   class="btn btn-danger btn-sm"
+                   onclick="return confirm('¿Está seguro de eliminar esta noticia?');">
+                    Eliminar
+                </a>
+
+            </td>
+
+        </tr>
+
+        {% else %}
+
+        <tr>
+            <td colspan="6" style="text-align:center;">
+                No hay noticias registradas.
+            </td>
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}
