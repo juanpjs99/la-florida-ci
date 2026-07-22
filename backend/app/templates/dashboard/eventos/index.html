@@ -1,0 +1,98 @@
+{% extends "dashboard/layout.html" %}
+
+{% block content %}
+
+<h2>Listado de Eventos</h2>
+
+<div class="mb-3">
+    <a href="{{ url_for('evento.mostrar_crear') }}"
+       class="btn btn-primary">
+        + Nuevo evento
+    </a>
+</div>
+
+<table border="1" cellpadding="10">
+
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Imagen</th>
+            <th>Título</th>
+            <th>Lugar</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Autor</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        {% for evento in eventos %}
+
+        <tr>
+
+            <td>{{ evento.id }}</td>
+
+            <td>
+
+                {% if evento.imagen %}
+
+                    <img
+                        src="{{ url_for('static', filename='uploads/eventos/' ~ evento.imagen) }}"
+                        width="120"
+                        alt="Imagen del evento">
+
+                {% else %}
+
+                    Sin imagen
+
+                {% endif %}
+
+            </td>
+
+            <td>{{ evento.titulo }}</td>
+
+            <td>{{ evento.lugar }}</td>
+
+            <td>{{ evento.fecha_evento }}</td>
+
+            <td>{{ evento.hora_evento }}</td>
+
+            <td>{{ evento.autor }}</td>
+
+            <td>{{ evento.estado }}</td>
+
+            <td>
+
+                <a href="{{ url_for('evento.editar', id=evento.id) }}"
+                   class="btn btn-warning btn-sm">
+                    Editar
+                </a>
+
+                <a href="{{ url_for('evento.eliminar', id=evento.id) }}"
+                   class="btn btn-danger btn-sm"
+                   onclick="return confirm('¿Está seguro de eliminar este evento?');">
+                    Eliminar
+                </a>
+
+            </td>
+
+        </tr>
+
+        {% else %}
+
+        <tr>
+            <td colspan="9" style="text-align:center;">
+                No hay eventos registrados.
+            </td>
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}

@@ -1,0 +1,155 @@
+{% extends "dashboard/layout.html" %}
+
+{% block content %}
+
+<h2>Editar Evento</h2>
+
+<form
+    action="{{ url_for('evento.actualizar', id=evento.id) }}"
+    method="POST"
+    enctype="multipart/form-data">
+
+    <input
+        type="hidden"
+        name="imagen_actual"
+        value="{{ evento.imagen }}">
+
+    <div class="mb-3">
+        <label>Título</label>
+        <input
+            type="text"
+            name="titulo"
+            class="form-control"
+            value="{{ evento.titulo }}"
+            required>
+    </div>
+
+    <div class="mb-3">
+        <label>Descripción</label>
+        <textarea
+            name="descripcion"
+            class="form-control"
+            rows="6"
+            required>{{ evento.descripcion }}</textarea>
+    </div>
+
+    <div class="mb-3">
+
+        <label>Imagen actual</label>
+
+        <br>
+
+        {% if evento.imagen %}
+
+            <img
+                src="{{ url_for('static', filename='uploads/eventos/' ~ evento.imagen) }}"
+                width="200"
+                class="mb-3">
+
+        {% else %}
+
+            <p>Sin imagen</p>
+
+        {% endif %}
+
+    </div>
+
+    <div class="mb-3">
+
+        <label>Nueva imagen</label>
+
+        <input
+            type="file"
+            name="imagen"
+            class="form-control"
+            accept=".jpg,.jpeg,.png,.webp">
+
+    </div>
+
+    <div class="mb-3">
+
+        <label>Lugar</label>
+
+        <input
+            type="text"
+            name="lugar"
+            class="form-control"
+            value="{{ evento.lugar }}">
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6 mb-3">
+
+            <label>Fecha del evento</label>
+
+            <input
+                type="date"
+                name="fecha_evento"
+                class="form-control"
+                value="{{ evento.fecha_evento }}"
+                required>
+
+        </div>
+
+        <div class="col-md-6 mb-3">
+
+            <label>Hora del evento</label>
+
+            <input
+                type="time"
+                name="hora_evento"
+                class="form-control"
+                value="{{ evento.hora_evento }}">
+
+        </div>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label>Estado</label>
+
+        <select
+            name="estado"
+            class="form-select">
+
+            <option value="ACTIVO"
+                {% if evento.estado == 'ACTIVO' %}selected{% endif %}>
+                Activo
+            </option>
+
+            <option value="FINALIZADO"
+                {% if evento.estado == 'FINALIZADO' %}selected{% endif %}>
+                Finalizado
+            </option>
+
+            <option value="CANCELADO"
+                {% if evento.estado == 'CANCELADO' %}selected{% endif %}>
+                Cancelado
+            </option>
+
+        </select>
+
+    </div>
+
+    <button
+        type="submit"
+        class="btn btn-success">
+
+        Actualizar Evento
+
+    </button>
+
+    <a
+        href="{{ url_for('evento.listar') }}"
+        class="btn btn-secondary">
+
+        Cancelar
+
+    </a>
+
+</form>
+
+{% endblock %}

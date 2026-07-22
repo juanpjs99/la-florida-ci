@@ -4,6 +4,7 @@ from config import Config
 from app.database.db import mysql
 from app.routes.auth_routes import auth
 from app.routes.noticia_routes import noticia
+from app.routes.evento_routes import evento_bp
 
 app = Flask(
     __name__,
@@ -18,7 +19,8 @@ mysql.init_app(app)
 app.register_blueprint(auth)
 #registrar blueprint de rutas de noticias
 app.register_blueprint(noticia)
-
+#registrar blueprint de rutas de eventos
+app.register_blueprint(evento_bp)
     
 
 

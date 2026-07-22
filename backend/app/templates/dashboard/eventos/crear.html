@@ -1,0 +1,116 @@
+{% extends "dashboard/layout.html" %}
+
+{% block content %}
+
+<h2>Nuevo Evento</h2>
+
+<form
+    action="{{ url_for('evento.guardar') }}"
+    method="POST"
+    enctype="multipart/form-data">
+
+    <div class="mb-3">
+        <label>Título</label>
+        <input
+            type="text"
+            name="titulo"
+            class="form-control"
+            required>
+    </div>
+
+    <div class="mb-3">
+        <label>Descripción</label>
+        <textarea
+            name="descripcion"
+            class="form-control"
+            rows="6"
+            required></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label>Imagen</label>
+        <input
+            type="file"
+            name="imagen"
+            class="form-control"
+            accept=".jpg,.jpeg,.png,.webp">
+    </div>
+
+    <div class="mb-3">
+        <label>Lugar</label>
+        <input
+            type="text"
+            name="lugar"
+            class="form-control">
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6 mb-3">
+
+            <label>Fecha del evento</label>
+
+            <input
+                type="date"
+                name="fecha_evento"
+                class="form-control"
+                required>
+
+        </div>
+
+        <div class="col-md-6 mb-3">
+
+            <label>Hora del evento</label>
+
+            <input
+                type="time"
+                name="hora_evento"
+                class="form-control">
+
+        </div>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label>Estado</label>
+
+        <select
+            name="estado"
+            class="form-select">
+
+            <option value="ACTIVO">
+                Activo
+            </option>
+
+            <option value="FINALIZADO">
+                Finalizado
+            </option>
+
+            <option value="CANCELADO">
+                Cancelado
+            </option>
+
+        </select>
+
+    </div>
+
+    <button
+        type="submit"
+        class="btn btn-success">
+
+        Guardar Evento
+
+    </button>
+
+    <a
+        href="{{ url_for('evento.listar') }}"
+        class="btn btn-secondary">
+
+        Cancelar
+
+    </a>
+
+</form>
+
+{% endblock %}
