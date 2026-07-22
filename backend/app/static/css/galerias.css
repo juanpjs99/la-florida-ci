@@ -1,0 +1,531 @@
+/* ─── Galerias Module Styles ─── */
+/* Extends dashboard.css variables */
+
+/* ─── Back link ─── */
+
+.galerias-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #6c757d;
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.galerias-back-link:hover {
+    color: var(--primary);
+}
+
+/* ─── Header (list) ─── */
+
+.galerias-header h2 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 1.75rem;
+}
+
+.galerias-header .subtitle {
+    font-family: var(--font-body);
+    color: #6c757d;
+    font-size: 0.95rem;
+}
+
+/* ─── Header (form) ─── */
+
+.galerias-form-header h2 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 1.6rem;
+}
+
+.galerias-form-header .subtitle {
+    font-family: var(--font-body);
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+/* ─── Primary Action Button ─── */
+
+.btn-primary-action {
+    border-radius: 10px;
+    padding: 10px 24px;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 14px rgba(73, 42, 147, 0.2);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: none;
+    background-color: var(--primary);
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-primary-action:hover {
+    background-color: #3b2280;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(73, 42, 147, 0.3);
+    text-decoration: none;
+}
+
+.btn-primary-action:active {
+    transform: translateY(0);
+    background-color: #3b2280;
+}
+
+/* ─── Table ─── */
+
+.table-galerias {
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.table-galerias thead th {
+    background-color: var(--primary);
+    color: #fff;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    border-bottom: none;
+    padding: 14px 18px;
+}
+
+.table-galerias tbody td {
+    padding: 16px 18px;
+    vertical-align: middle;
+    border-bottom: 1px solid #f0f0f0;
+    background-color: #fff;
+}
+
+.table-galerias tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.table-galerias tbody tr {
+    transition: box-shadow 0.3s ease, background-color 0.2s ease;
+}
+
+.table-galerias tbody tr:hover td {
+    background-color: rgba(73, 42, 147, 0.02);
+}
+
+.table-galerias tbody tr:hover {
+    box-shadow: 0 0 20px rgba(73, 42, 147, 0.08);
+}
+
+.table-galerias tbody tr:nth-child(even) td {
+    background-color: #fafbfc;
+}
+
+.table-galerias tbody tr:nth-child(even):hover td {
+    background-color: rgba(73, 42, 147, 0.02);
+}
+
+/* ─── Status Badges ─── */
+
+.badge-galeria {
+    font-family: var(--font-body);
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.badge-galeria.activa,
+.badge-galeria.activo {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.badge-galeria.oculta,
+.badge-galeria.inactivo {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* ─── Action Buttons ─── */
+
+.btn-action {
+    border-radius: 8px;
+    padding: 6px 16px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border: none;
+    text-decoration: none;
+    line-height: 1.5;
+}
+
+.btn-action:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    text-decoration: none;
+}
+
+.btn-action:active {
+    transform: translateY(0);
+}
+
+.btn-editar {
+    background-color: var(--primary);
+    color: #fff;
+}
+
+.btn-editar:hover {
+    background-color: #3b2280;
+    color: #fff;
+}
+
+.btn-imagenes {
+    background-color: var(--complementary);
+    color: #fff;
+}
+
+.btn-imagenes:hover {
+    background-color: #8da8d8;
+    color: #fff;
+}
+
+.btn-eliminar {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.btn-eliminar:hover {
+    background-color: #a71d2a;
+    color: #fff;
+}
+
+/* ─── Image thumbnail (list) ─── */
+
+.img-thumbnail-galeria {
+    width: 100px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.img-thumbnail-galeria:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* ─── Empty state ─── */
+
+.empty-state-galeria {
+    text-align: center;
+    padding: 3.5rem 1rem;
+}
+
+.empty-state-galeria i {
+    font-size: 2.5rem;
+    color: #ced4da;
+    margin-bottom: 0.75rem;
+    display: block;
+}
+
+.empty-state-galeria h5 {
+    font-family: var(--font-heading);
+    color: #495057;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.empty-state-galeria p {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: #6c757d;
+    margin-bottom: 1.25rem;
+}
+
+.empty-state-galeria .btn-primary-action {
+    display: inline-flex;
+}
+
+/* ─── Title cell ─── */
+
+.titulo-cell strong {
+    color: #212529;
+}
+
+.titulo-cell small {
+    display: block;
+    margin-top: 0.25rem;
+}
+
+/* ─── Acciones wrapper ─── */
+
+.acciones-wrapper {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+/* ─── Form Card ─── */
+
+.galerias-form-card {
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.galerias-form-card .card-body {
+    padding: 2rem;
+}
+
+/* ─── Form group ─── */
+
+.form-group-galeria {
+    margin-bottom: 1.5rem;
+}
+
+.form-group-galeria label {
+    display: block;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+/* ─── Text inputs, textarea, select ─── */
+
+.form-control-galeria {
+    border: 2px solid #e2e5ea;
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: #495057;
+    background-color: #fff;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-control-galeria:focus {
+    border-color: var(--secondary);
+    box-shadow: 0 0 0 4px rgba(222, 225, 53, 0.15);
+    outline: none;
+}
+
+.form-control-galeria::placeholder {
+    color: #adb5bd;
+}
+
+textarea.form-control-galeria {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* ─── Select ─── */
+
+select.form-control-galeria {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23495057' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 40px;
+    cursor: pointer;
+}
+
+/* ─── Custom file input ─── */
+
+.form-file-galeria {
+    position: relative;
+}
+
+.form-file-galeria input[type="file"] {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.form-file-galeria .file-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border: 2px dashed #e2e5ea;
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: #6c757d;
+    background-color: #fafbfc;
+    transition: border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+}
+
+.form-file-galeria:hover .file-label {
+    border-color: var(--secondary);
+    background-color: rgba(222, 225, 53, 0.03);
+}
+
+.form-file-galeria input[type="file"]:focus ~ .file-label {
+    border-color: var(--secondary);
+    box-shadow: 0 0 0 4px rgba(222, 225, 53, 0.15);
+}
+
+.form-file-galeria .file-label i {
+    font-size: 1.5rem;
+    color: var(--primary);
+    flex-shrink: 0;
+}
+
+/* ─── Current cover image (editar) ─── */
+
+.portada-actual {
+    display: inline-block;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    max-width: 250px;
+}
+
+.portada-actual img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ─── Submit button ─── */
+
+.btn-submit-galeria {
+    border-radius: 10px;
+    padding: 12px 32px;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 14px rgba(73, 42, 147, 0.2);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: none;
+    background-color: var(--primary);
+    color: #fff;
+    width: 100%;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.btn-submit-galeria:hover {
+    background-color: #3b2280;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(73, 42, 147, 0.3);
+}
+
+.btn-submit-galeria:active {
+    transform: translateY(0);
+    background-color: #3b2280;
+}
+
+/* ─── Form action buttons container ─── */
+
+.form-actions-galeria {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    padding-top: 0.5rem;
+}
+
+/* ─── Cancel button ─── */
+
+.btn-cancelar {
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 2px solid #e2e5ea;
+    background-color: transparent;
+    color: #6c757d;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-cancelar:hover {
+    background-color: #f8f9fa;
+    border-color: #ced4da;
+    color: #495057;
+    text-decoration: none;
+}
+
+/* ─── File hint ─── */
+
+.file-hint {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: #adb5bd;
+    margin-top: 0.5rem;
+}
+
+/* ─── Responsive ─── */
+
+@media (max-width: 768px) {
+    .galerias-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .galerias-form-card .card-body {
+        padding: 1.5rem;
+    }
+
+    .galerias-form-header h2 {
+        font-size: 1.3rem;
+    }
+
+    .table-galerias thead th,
+    .table-galerias tbody td {
+        padding: 12px 14px;
+    }
+
+    .form-actions-galeria {
+        flex-direction: column;
+    }
+
+    .form-actions-galeria .btn-cancelar,
+    .form-actions-galeria .btn-submit-galeria {
+        width: 100%;
+        justify-content: center;
+    }
+}

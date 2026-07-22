@@ -1,0 +1,250 @@
+/* ─── Noticias Module Styles ─── */
+/* Extends dashboard.css variables */
+
+/* ─── Header ─── */
+
+.noticias-header h2 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 1.75rem;
+}
+
+.noticias-header .subtitle {
+    font-family: var(--font-body);
+    color: #6c757d;
+    font-size: 0.95rem;
+}
+
+/* ─── Table ─── */
+
+.table-noticias {
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.table-noticias thead th {
+    background-color: var(--primary);
+    color: #fff;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    border-bottom: none;
+    padding: 14px 18px;
+}
+
+.table-noticias tbody td {
+    padding: 16px 18px;
+    vertical-align: middle;
+    border-bottom: 1px solid #f0f0f0;
+    background-color: #fff;
+}
+
+.table-noticias tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.table-noticias tbody tr {
+    transition: box-shadow 0.3s ease, background-color 0.2s ease;
+}
+
+.table-noticias tbody tr:hover td {
+    background-color: rgba(73, 42, 147, 0.02);
+}
+
+.table-noticias tbody tr:hover {
+    box-shadow: 0 0 20px rgba(73, 42, 147, 0.08);
+}
+
+.table-noticias tbody tr:nth-child(even) td {
+    background-color: #fafbfc;
+}
+
+.table-noticias tbody tr:nth-child(even):hover td {
+    background-color: rgba(73, 42, 147, 0.02);
+}
+
+/* ─── Status Badges ─── */
+
+.badge-estado {
+    font-family: var(--font-body);
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.badge-estado.publicada {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.badge-estado.borrador {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.badge-estado.oculta {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* ─── Action Buttons ─── */
+
+.btn-action {
+    border-radius: 8px;
+    padding: 6px 16px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border: none;
+    text-decoration: none;
+    line-height: 1.5;
+}
+
+.btn-action:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    text-decoration: none;
+}
+
+.btn-action:active {
+    transform: translateY(0);
+}
+
+.btn-editar {
+    background-color: var(--primary);
+    color: #fff;
+}
+
+.btn-editar:hover {
+    background-color: #3b2280;
+    color: #fff;
+}
+
+.btn-eliminar {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.btn-eliminar:hover {
+    background-color: #a71d2a;
+    color: #fff;
+}
+
+/* ─── Primary Button (Nueva noticia) ─── */
+
+.btn-primary-action {
+    border-radius: 10px;
+    padding: 10px 24px;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 14px rgba(73, 42, 147, 0.2);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: none;
+    background-color: var(--primary);
+    color: #fff;
+}
+
+.btn-primary-action:hover {
+    background-color: #3b2280;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(73, 42, 147, 0.3);
+}
+
+.btn-primary-action:active {
+    transform: translateY(0);
+    background-color: #3b2280;
+}
+
+/* ─── Image thumbnail ─── */
+
+.img-thumbnail-noticia {
+    width: 100px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.img-thumbnail-noticia:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* ─── Empty state ─── */
+
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+.empty-state i {
+    font-size: 2.5rem;
+    color: #ced4da;
+    margin-bottom: 0.75rem;
+    display: block;
+}
+
+.empty-state p {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: #6c757d;
+    margin-bottom: 0;
+}
+
+/* ─── Actions column ─── */
+
+.acciones-wrapper {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+/* ─── Author cell ─── */
+
+.autor-cell {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #495057;
+}
+
+.autor-cell i {
+    color: #adb5bd;
+    font-size: 1rem;
+}
+
+/* ─── Responsive adjustments ─── */
+
+@media (max-width: 768px) {
+    .noticias-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .table-noticias thead th,
+    .table-noticias tbody td {
+        padding: 12px 14px;
+    }
+}

@@ -2,97 +2,135 @@
 
 {% block content %}
 
-<h2>Listado de Eventos</h2>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/eventos.css') }}">
 
-<div class="mb-3">
+<div class="eventos-header d-flex flex-wrap justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="mb-1">
+            <i class="bi bi-calendar-event me-2"></i>Listado de Eventos
+        </h2>
+        <p class="subtitle mb-0">Gestión y administración de eventos del jardín</p>
+    </div>
     <a href="{{ url_for('evento.mostrar_crear') }}"
-       class="btn btn-primary">
-        + Nuevo evento
+       class="btn-primary-action">
+        <i class="bi bi-plus-circle"></i> Nuevo evento
     </a>
 </div>
 
-<table border="1" cellpadding="10">
+<div class="table-responsive">
+    <table class="table table-eventos align-middle mb-0">
 
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Imagen</th>
-            <th>Título</th>
-            <th>Lugar</th>
-            <th>Fecha</th>
-            <th>Hora</th>
-            <th>Autor</th>
-            <th>Estado</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
+        <thead>
+            <tr>
+                <th style="width:4%;">ID</th>
+                <th style="width:12%;">Imagen</th>
+                <th style="width:16%;">Título</th>
+                <th style="width:13%;">Lugar</th>
+                <th style="width:11%;">Fecha</th>
+                <th style="width:8%;">Hora</th>
+                <th style="width:13%;">Autor</th>
+                <th style="width:10%;">Estado</th>
+                <th style="width:13%;">Acciones</th>
+            </tr>
+        </thead>
 
-    <tbody>
+        <tbody>
 
-        {% for evento in eventos %}
+            {% for evento in eventos %}
 
-        <tr>
+            <tr>
 
-            <td>{{ evento.id }}</td>
+                <td class="fw-semibold text-secondary">{{ evento.id }}</td>
 
-            <td>
+                <td>
+                    {% if evento.imagen %}
 
-                {% if evento.imagen %}
+                    <img src="{{ url_for('static', filename='uploads/eventos/' ~ evento.imagen) }}"
+                         alt="Imagen del evento"
+                         class="img-thumbnail-evento">
 
-                    <img
-                        src="{{ url_for('static', filename='uploads/eventos/' ~ evento.imagen) }}"
-                        width="120"
-                        alt="Imagen del evento">
+                    {% else %}
 
-                {% else %}
+                    <span class="text-muted small">
+                        <i class="bi bi-image me-1"></i>Sin imagen
+                    </span>
 
-                    Sin imagen
+                    {% endif %}
+                </td>
 
-                {% endif %}
+                <td class="fw-semibold">{{ evento.titulo }}</td>
 
-            </td>
+                <td>
+                    <span class="d-flex align-items-center gap-1">
+                        <i class="bi bi-geo-alt text-muted" style="font-size:0.85rem;"></i>
+                        {{ evento.lugar }}
+                    </span>
+                </td>
 
-            <td>{{ evento.titulo }}</td>
+                <td class="text-secondary small">{{ evento.fecha_evento }}</td>
 
-            <td>{{ evento.lugar }}</td>
+                <td>
+                    {% if evento.hora_evento %}
+                    <span class="d-flex align-items-center gap-1">
+                        <i class="bi bi-clock text-muted" style="font-size:0.85rem;"></i>
+                        {{ evento.hora_evento }}
+                    </span>
+                    {% else %}
+                    <span class="text-muted small">—</span>
+                    {% endif %}
+                </td>
 
-            <td>{{ evento.fecha_evento }}</td>
+                <td>
+                    <span class="d-flex align-items-center gap-1">
+                        <i class="bi bi-person-circle text-muted"></i>
+                        {{ evento.autor }}
+                    </span>
+                </td>
 
-            <td>{{ evento.hora_evento }}</td>
+                <td>
+                    {% set estado_lower = evento.estado | lower %}
+                    <span class="badge-evento {{ estado_lower }}">
+                        {{ evento.estado }}
+                    </span>
+                </td>
 
-            <td>{{ evento.autor }}</td>
+                <td>
+                    <div class="acciones-wrapper">
+                        <a href="{{ url_for('evento.editar', id=evento.id) }}"
+                           class="btn-action btn-editar">
+                            <i class="bi bi-pencil-square"></i> Editar
+                        </a>
+                        <a href="{{ url_for('evento.eliminar', id=evento.id) }}"
+                           class="btn-action btn-eliminar"
+                           onclick="return confirm('¿Está seguro de eliminar este evento?');">
+                            <i class="bi bi-trash3"></i> Eliminar
+                        </a>
+                    </div>
+                </td>
 
-            <td>{{ evento.estado }}</td>
+            </tr>
 
-            <td>
+            {% else %}
 
-                <a href="{{ url_for('evento.editar', id=evento.id) }}"
-                   class="btn btn-warning btn-sm">
-                    Editar
-                </a>
+            <tr>
+                <td colspan="9">
+                    <div class="empty-state-eventos">
+                        <i class="bi bi-calendar2-week"></i>
+                        <h5>No hay eventos registrados</h5>
+                        <p>Crea tu primer evento para empezar a publicar actividades del jardín.</p>
+                        <a href="{{ url_for('evento.mostrar_crear') }}"
+                           class="btn-primary-action">
+                            <i class="bi bi-plus-circle"></i> Nuevo evento
+                        </a>
+                    </div>
+                </td>
+            </tr>
 
-                <a href="{{ url_for('evento.eliminar', id=evento.id) }}"
-                   class="btn btn-danger btn-sm"
-                   onclick="return confirm('¿Está seguro de eliminar este evento?');">
-                    Eliminar
-                </a>
+            {% endfor %}
 
-            </td>
+        </tbody>
 
-        </tr>
-
-        {% else %}
-
-        <tr>
-            <td colspan="9" style="text-align:center;">
-                No hay eventos registrados.
-            </td>
-        </tr>
-
-        {% endfor %}
-
-    </tbody>
-
-</table>
+    </table>
+</div>
 
 {% endblock %}

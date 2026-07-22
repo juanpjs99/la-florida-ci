@@ -2,84 +2,85 @@
 
 {% block content %}
 
-<h2>Nueva noticia</h2>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/noticias-form.css') }}">
 
-<form action="{{ url_for('noticia.guardar') }}"
-        method="POST"
-        enctype="multipart/form-data">
+<a href="{{ url_for('noticia.listar') }}" class="noticias-back-link mb-3">
+    <i class="bi bi-arrow-left"></i> Volver al listado
+</a>
 
-    <div>
-        <label>Título</label>
-        <input
-            type="text"
-            name="titulo"
-            required
-        >
+<div class="noticias-form-header mb-4">
+    <h2 class="mb-1">
+        <i class="bi bi-plus-circle me-2"></i>Nueva noticia
+    </h2>
+    <p class="subtitle mb-0">Completa los campos para crear una nueva noticia</p>
+</div>
+
+<div class="card noticias-form-card">
+    <div class="card-body">
+
+        <form action="{{ url_for('noticia.guardar') }}"
+              method="POST"
+              enctype="multipart/form-data">
+
+            <div class="form-group-noticia">
+                <label for="titulo">Título</label>
+                <input type="text"
+                       name="titulo"
+                       id="titulo"
+                       class="form-control-noticia"
+                       placeholder="Ingresa el título de la noticia"
+                       required>
+            </div>
+
+            <div class="form-group-noticia">
+                <label for="resumen">Resumen</label>
+                <textarea name="resumen"
+                          id="resumen"
+                          class="form-control-noticia"
+                          rows="3"
+                          placeholder="Breve descripción de la noticia"></textarea>
+            </div>
+
+            <div class="form-group-noticia">
+                <label for="contenido">Contenido</label>
+                <textarea name="contenido"
+                          id="contenido"
+                          class="form-control-noticia"
+                          rows="10"
+                          placeholder="Escribe el contenido completo de la noticia"
+                          required></textarea>
+            </div>
+
+            <div class="form-group-noticia">
+                <label for="imagen">Imagen</label>
+                <div class="form-file-noticia">
+                    <input type="file"
+                           name="imagen"
+                           id="imagen"
+                           accept=".jpg,.jpeg,.png,.webp">
+                    <div class="file-label">
+                        <i class="bi bi-image"></i>
+                        <span class="file-label-text">Seleccionar imagen (JPG, PNG o WebP)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group-noticia">
+                <label for="estado">Estado</label>
+                <select name="estado" id="estado" class="form-control-noticia">
+                    <option value="BORRADOR">Borrador</option>
+                    <option value="PUBLICADA">Publicada</option>
+                    <option value="OCULTA">Oculta</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn-submit-noticia">
+                <i class="bi bi-check2-circle"></i> Guardar noticia
+            </button>
+
+        </form>
+
     </div>
-
-    <br>
-
-    <div>
-        <label>Resumen</label>
-
-        <textarea
-            name="resumen"
-            rows="3">
-        </textarea>
-
-    </div>
-
-    <br>
-
-    <div>
-
-        <label>Contenido</label>
-
-        <textarea
-            name="contenido"
-            rows="10"
-            required>
-        </textarea>
-
-    </div>
-
-    <br>
-    <div class="mb-3">
-        <label for="imagen">Imagen</label>
-        <input type="file" 
-                name="imagen" 
-                id="imagen" 
-                accept=".jpg,.jpeg,.png,.webp">
-    </div>
-
-    <div>
-
-        <label>Estado</label>
-
-        <select name="estado">
-
-            <option value="BORRADOR">
-                Borrador
-            </option>
-
-            <option value="PUBLICADA">
-                Publicada
-            </option>
-
-            <option value="OCULTA">
-                Oculta
-            </option>
-
-        </select>
-
-    </div>
-
-    <br>
-
-    <button type="submit">
-        Guardar noticia
-    </button>
-
-</form>
+</div>
 
 {% endblock %}

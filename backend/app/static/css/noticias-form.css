@@ -1,0 +1,198 @@
+/* ─── Noticias Form Styles ─── */
+/* Extends dashboard.css variables */
+
+/* ─── Back link ─── */
+
+.noticias-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #6c757d;
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.noticias-back-link:hover {
+    color: var(--primary);
+}
+
+/* ─── Header ─── */
+
+.noticias-form-header h2 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 1.6rem;
+}
+
+.noticias-form-header .subtitle {
+    font-family: var(--font-body);
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+/* ─── Card ─── */
+
+.noticias-form-card {
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.noticias-form-card .card-body {
+    padding: 2rem;
+}
+
+/* ─── Form group ─── */
+
+.form-group-noticia {
+    margin-bottom: 1.5rem;
+}
+
+.form-group-noticia label {
+    display: block;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+/* ─── Text inputs, textarea, select ─── */
+
+.form-control-noticia {
+    border: 2px solid #e2e5ea;
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: #495057;
+    background-color: #fff;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-control-noticia:focus {
+    border-color: var(--secondary);
+    box-shadow: 0 0 0 4px rgba(222, 225, 53, 0.15);
+    outline: none;
+}
+
+.form-control-noticia::placeholder {
+    color: #adb5bd;
+}
+
+textarea.form-control-noticia {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* ─── Select ─── */
+
+select.form-control-noticia {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23495057' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 40px;
+    cursor: pointer;
+}
+
+/* ─── Custom file input ─── */
+
+.form-file-noticia {
+    position: relative;
+}
+
+.form-file-noticia input[type="file"] {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.form-file-noticia .file-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border: 2px dashed #e2e5ea;
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: #6c757d;
+    background-color: #fafbfc;
+    transition: border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+}
+
+.form-file-noticia:hover .file-label {
+    border-color: var(--secondary);
+    background-color: rgba(222, 225, 53, 0.03);
+}
+
+.form-file-noticia input[type="file"]:focus ~ .file-label {
+    border-color: var(--secondary);
+    box-shadow: 0 0 0 4px rgba(222, 225, 53, 0.15);
+}
+
+.form-file-noticia .file-label i {
+    font-size: 1.5rem;
+    color: var(--primary);
+    flex-shrink: 0;
+}
+
+/* ─── Submit button ─── */
+
+.btn-submit-noticia {
+    border-radius: 10px;
+    padding: 12px 32px;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 14px rgba(73, 42, 147, 0.2);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: none;
+    background-color: var(--primary);
+    color: #fff;
+    width: 100%;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.btn-submit-noticia:hover {
+    background-color: #3b2280;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(73, 42, 147, 0.3);
+}
+
+.btn-submit-noticia:active {
+    transform: translateY(0);
+    background-color: #3b2280;
+}
+
+/* ─── Responsive ─── */
+
+@media (max-width: 768px) {
+    .noticias-form-card .card-body {
+        padding: 1.5rem;
+    }
+
+    .noticias-form-header h2 {
+        font-size: 1.3rem;
+    }
+}

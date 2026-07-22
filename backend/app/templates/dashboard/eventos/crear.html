@@ -2,115 +2,112 @@
 
 {% block content %}
 
-<h2>Nuevo Evento</h2>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/eventos.css') }}">
 
-<form
-    action="{{ url_for('evento.guardar') }}"
-    method="POST"
-    enctype="multipart/form-data">
+<a href="{{ url_for('evento.listar') }}" class="eventos-back-link mb-3">
+    <i class="bi bi-arrow-left"></i> Volver al listado
+</a>
 
-    <div class="mb-3">
-        <label>Título</label>
-        <input
-            type="text"
-            name="titulo"
-            class="form-control"
-            required>
+<div class="eventos-form-header mb-4">
+    <h2 class="mb-1">
+        <i class="bi bi-plus-circle me-2"></i>Nuevo Evento
+    </h2>
+    <p class="subtitle mb-0">Completa los campos para crear un nuevo evento</p>
+</div>
+
+<div class="card eventos-form-card">
+    <div class="card-body">
+
+        <form action="{{ url_for('evento.guardar') }}"
+              method="POST"
+              enctype="multipart/form-data">
+
+            <div class="form-group-evento">
+                <label for="titulo">Título</label>
+                <input type="text"
+                       name="titulo"
+                       id="titulo"
+                       class="form-control-evento"
+                       placeholder="Ingresa el título del evento"
+                       required>
+            </div>
+
+            <div class="form-group-evento">
+                <label for="descripcion">Descripción</label>
+                <textarea name="descripcion"
+                          id="descripcion"
+                          class="form-control-evento"
+                          rows="6"
+                          placeholder="Describe los detalles del evento"
+                          required></textarea>
+            </div>
+
+            <div class="form-group-evento">
+                <label for="imagen">Imagen</label>
+                <div class="form-file-evento">
+                    <input type="file"
+                           name="imagen"
+                           id="imagen"
+                           accept=".jpg,.jpeg,.png,.webp">
+                    <div class="file-label">
+                        <i class="bi bi-image"></i>
+                        <span>Seleccionar imagen del evento</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group-evento">
+                <label for="lugar">Lugar</label>
+                <input type="text"
+                       name="lugar"
+                       id="lugar"
+                       class="form-control-evento"
+                       placeholder="Ej: Salón principal, Patio de juegos, etc.">
+            </div>
+
+            <div class="form-row-eventos">
+                <div class="form-group-evento">
+                    <label for="fecha_evento">Fecha del evento</label>
+                    <input type="date"
+                           name="fecha_evento"
+                           id="fecha_evento"
+                           class="form-control-evento"
+                           required>
+                </div>
+
+                <div class="form-group-evento">
+                    <label for="hora_evento">Hora del evento</label>
+                    <input type="time"
+                           name="hora_evento"
+                           id="hora_evento"
+                           class="form-control-evento">
+                </div>
+            </div>
+
+            <div class="form-group-evento">
+                <label for="estado">Estado</label>
+                <select name="estado" id="estado" class="form-control-evento">
+                    <option value="ACTIVO">Activo</option>
+                    <option value="FINALIZADO">Finalizado</option>
+                    <option value="CANCELADO">Cancelado</option>
+                </select>
+            </div>
+
+            <div class="form-actions-eventos">
+                <a href="{{ url_for('evento.listar') }}"
+                   class="btn-cancelar">
+                    <i class="bi bi-x-lg"></i> Cancelar
+                </a>
+                <button type="submit"
+                        class="btn-submit-evento"
+                        style="width:auto;">
+                    <i class="bi bi-check2-circle"></i> Guardar Evento
+                </button>
+            </div>
+
+        </form>
+
     </div>
-
-    <div class="mb-3">
-        <label>Descripción</label>
-        <textarea
-            name="descripcion"
-            class="form-control"
-            rows="6"
-            required></textarea>
-    </div>
-
-    <div class="mb-3">
-        <label>Imagen</label>
-        <input
-            type="file"
-            name="imagen"
-            class="form-control"
-            accept=".jpg,.jpeg,.png,.webp">
-    </div>
-
-    <div class="mb-3">
-        <label>Lugar</label>
-        <input
-            type="text"
-            name="lugar"
-            class="form-control">
-    </div>
-
-    <div class="row">
-
-        <div class="col-md-6 mb-3">
-
-            <label>Fecha del evento</label>
-
-            <input
-                type="date"
-                name="fecha_evento"
-                class="form-control"
-                required>
-
-        </div>
-
-        <div class="col-md-6 mb-3">
-
-            <label>Hora del evento</label>
-
-            <input
-                type="time"
-                name="hora_evento"
-                class="form-control">
-
-        </div>
-
-    </div>
-
-    <div class="mb-3">
-
-        <label>Estado</label>
-
-        <select
-            name="estado"
-            class="form-select">
-
-            <option value="ACTIVO">
-                Activo
-            </option>
-
-            <option value="FINALIZADO">
-                Finalizado
-            </option>
-
-            <option value="CANCELADO">
-                Cancelado
-            </option>
-
-        </select>
-
-    </div>
-
-    <button
-        type="submit"
-        class="btn btn-success">
-
-        Guardar Evento
-
-    </button>
-
-    <a
-        href="{{ url_for('evento.listar') }}"
-        class="btn btn-secondary">
-
-        Cancelar
-
-    </a>
-
-</form>
+</div>
 
 {% endblock %}

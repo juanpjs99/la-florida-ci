@@ -2,88 +2,107 @@
 
 {% block content %}
 
-<h2>Listado de Noticias</h2>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/noticias.css') }}">
 
-<div class="mb-3">
+<div class="noticias-header d-flex flex-wrap justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="mb-1">
+            <i class="bi bi-newspaper me-2"></i>Listado de Noticias
+        </h2>
+        <p class="subtitle mb-0">Gestión y administración de noticias del jardín</p>
+    </div>
     <a href="{{ url_for('noticia.mostrar_crear') }}"
-       class="btn btn-primary">
-        + Nueva noticia
+       class="btn btn-primary-action">
+        <i class="bi bi-plus-circle"></i> Nueva noticia
     </a>
 </div>
 
-<table border="1" cellpadding="10">
+<div class="table-responsive">
+    <table class="table table-noticias align-middle mb-0">
 
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Imagen</th>
-            <th>Título</th>
-            <th>Autor</th>
-            <th>Estado</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
+        <thead>
+            <tr>
+                <th style="width:5%;">ID</th>
+                <th style="width:15%;">Imagen</th>
+                <th style="width:25%;">Título</th>
+                <th style="width:15%;">Autor</th>
+                <th style="width:12%;">Estado</th>
+                <th style="width:28%;">Acciones</th>
+            </tr>
+        </thead>
 
-    <tbody>
+        <tbody>
 
-        {% for noticia in noticias %}
+            {% for noticia in noticias %}
 
-        <tr>
+            <tr>
 
-            <td>{{ noticia.id }}</td>
+                <td class="fw-semibold text-secondary">{{ noticia.id }}</td>
 
-            <td>
+                <td>
+                    {% if noticia.imagen %}
 
-                {% if noticia.imagen %}
+                    <img src="{{ url_for('static', filename='uploads/noticias/' ~ noticia.imagen) }}"
+                         alt="Imagen noticia"
+                         class="img-thumbnail-noticia">
 
-                    <img
-                        src="{{ url_for('static', filename='uploads/noticias/' ~ noticia.imagen) }}"
-                        width="120"
-                        alt="Imagen noticia">
+                    {% else %}
 
-                {% else %}
+                    <span class="text-muted small">
+                        <i class="bi bi-image me-1"></i>Sin imagen
+                    </span>
 
-                    Sin imagen
+                    {% endif %}
+                </td>
 
-                {% endif %}
+                <td class="fw-semibold">{{ noticia.titulo }}</td>
 
-            </td>
+                <td>
+                    <span class="autor-cell">
+                        <i class="bi bi-person-circle"></i>
+                        {{ noticia.autor }}
+                    </span>
+                </td>
 
-            <td>{{ noticia.titulo }}</td>
+                <td>
+                    {% set estado_lower = noticia.estado | lower %}
+                    <span class="badge-estado {{ estado_lower }}">
+                        {{ noticia.estado }}
+                    </span>
+                </td>
 
-            <td>{{ noticia.autor }}</td>
+                <td>
+                    <div class="acciones-wrapper">
+                        <a href="{{ url_for('noticia.editar', id=noticia.id) }}"
+                           class="btn-action btn-editar">
+                            <i class="bi bi-pencil-square"></i> Editar
+                        </a>
+                        <a href="{{ url_for('noticia.eliminar', id=noticia.id) }}"
+                           class="btn-action btn-eliminar"
+                           onclick="return confirm('¿Está seguro de eliminar esta noticia?');">
+                            <i class="bi bi-trash3"></i> Eliminar
+                        </a>
+                    </div>
+                </td>
 
-            <td>{{ noticia.estado }}</td>
+            </tr>
 
-            <td>
+            {% else %}
 
-                <a href="{{ url_for('noticia.editar', id=noticia.id) }}"
-                   class="btn btn-warning btn-sm">
-                    Editar
-                </a>
+            <tr>
+                <td colspan="6">
+                    <div class="empty-state">
+                        <i class="bi bi-inbox"></i>
+                        <p>No hay noticias registradas.</p>
+                    </div>
+                </td>
+            </tr>
 
-                <a href="{{ url_for('noticia.eliminar', id=noticia.id) }}"
-                   class="btn btn-danger btn-sm"
-                   onclick="return confirm('¿Está seguro de eliminar esta noticia?');">
-                    Eliminar
-                </a>
+            {% endfor %}
 
-            </td>
+        </tbody>
 
-        </tr>
-
-        {% else %}
-
-        <tr>
-            <td colspan="6" style="text-align:center;">
-                No hay noticias registradas.
-            </td>
-        </tr>
-
-        {% endfor %}
-
-    </tbody>
-
-</table>
+    </table>
+</div>
 
 {% endblock %}
