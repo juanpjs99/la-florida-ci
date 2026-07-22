@@ -1,0 +1,155 @@
+{% extends "dashboard/layout.html" %}
+
+{% block title %}Editar Galería{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8">
+
+            <div class="card shadow-sm">
+
+                <div class="card-header">
+                    <h4 class="mb-0">Editar Galería</h4>
+                </div>
+
+                <div class="card-body">
+
+                    <form
+                        action="{{ url_for('galeria.actualizar', id=galeria.id) }}"
+                        method="POST"
+                        enctype="multipart/form-data">
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Título
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="titulo"
+                                value="{{ galeria.titulo }}"
+                                required>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Descripción
+                            </label>
+
+                            <textarea
+                                class="form-control"
+                                name="descripcion"
+                                rows="5">{{ galeria.descripcion }}</textarea>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Portada actual
+                            </label>
+
+                            <br>
+
+                            {% if galeria.portada %}
+
+                                <img
+                                    src="{{ url_for('static', filename='uploads/galerias/' ~ galeria.portada) }}"
+                                    class="img-thumbnail mb-3"
+                                    style="max-width:250px;">
+
+                            {% else %}
+
+                                <p class="text-muted">
+                                    Esta galería no tiene portada.
+                                </p>
+
+                            {% endif %}
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Cambiar portada
+                            </label>
+
+                            <input
+                                type="file"
+                                class="form-control"
+                                name="portada"
+                                accept="image/*">
+
+                            <small class="text-muted">
+                                Si no selecciona una imagen, se conservará la portada actual.
+                            </small>
+
+                        </div>
+
+                        <div class="mb-4">
+
+                            <label class="form-label">
+                                Estado
+                            </label>
+
+                            <select
+                                class="form-select"
+                                name="estado">
+
+                                <option
+                                    value="ACTIVO"
+                                    {% if galeria.estado == 'ACTIVO' %}selected{% endif %}>
+                                    Activo
+                                </option>
+
+                                <option
+                                    value="INACTIVO"
+                                    {% if galeria.estado == 'INACTIVO' %}selected{% endif %}>
+                                    Oculta
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="d-flex justify-content-end gap-2">
+
+                            <a
+                                href="{{ url_for('galeria.listar') }}"
+                                class="btn btn-secondary">
+
+                                Cancelar
+
+                            </a>
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary">
+
+                                Actualizar
+
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

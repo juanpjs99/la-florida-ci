@@ -1,10 +1,15 @@
-from flask import Flask, render_template, session, redirect, url_for
+from flask import Flask
 
 from config import Config
 from app.database.db import mysql
+
+# Blueprints
 from app.routes.auth_routes import auth
-from app.routes.noticia_routes import noticia
-from app.routes.evento_routes import evento_bp
+from app.routes.dashboard_routes import dashboard
+from app.routes.admin.noticia_routes import noticia
+from app.routes.admin.evento_routes import evento
+from app.routes.admin.galeria_routes import galeria
+
 
 app = Flask(
     __name__,
@@ -13,15 +18,15 @@ app = Flask(
 )
 
 app.config.from_object(Config)
+
 mysql.init_app(app)
 
-#registrar blueprint de rutas de autenticación
+# Registrar Blueprints
 app.register_blueprint(auth)
-#registrar blueprint de rutas de noticias
+app.register_blueprint(dashboard)
 app.register_blueprint(noticia)
-#registrar blueprint de rutas de eventos
-app.register_blueprint(evento_bp)
-    
+app.register_blueprint(evento)
+app.register_blueprint(galeria)
 
 
 @app.route("/")
@@ -29,32 +34,15 @@ def home():
     return "Backend La Florida CI"
 
 
-#dashboar protegido 
-@app.route("/dashboard")
-def dashboard():
-
-    if "usuario_id" not in session:
-        return redirect(url_for("auth.mostrar_login"))
-
-    stats = {
-        "noticias": 0,
-        "eventos": 0,
-        "galerias": 0
-    }
-
-    return render_template(
-        "dashboard/index.html",
-        nombre=session["nombre"],
-        rol=session["rol"],
-        stats=stats
-    )
-
 @app.route("/test-db")
 def test_db():
     try:
         cursor = mysql.connection.cursor()
+
         cursor.execute("SELECT DATABASE();")
+
         resultado = cursor.fetchone()
+
         cursor.close()
 
         return {

@@ -1,0 +1,95 @@
+# ==========================
+# Python
+# ==========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Entorno virtual
+.venv/
+venv/
+env/
+ENV/
+
+# Variables de entorno
+.env
+.env.*
+
+# ==========================
+# Flask
+# ==========================
+instance/
+.webassets-cache/
+
+# ==========================
+# VS Code
+# ==========================
+.vscode/
+
+# ==========================
+# Archivos del sistema
+# ==========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ==========================
+# Logs
+# ==========================
+*.log
+
+# ==========================
+# Pytest
+# ==========================
+.pytest_cache/
+
+# ==========================
+# Mypy
+# ==========================
+.mypy_cache/
+
+# ==========================
+# Ruff
+# ==========================
+.ruff_cache/
+
+# ==========================
+# Cobertura
+# ==========================
+.coverage
+htmlcov/
+
+# ==========================
+# Build
+# ==========================
+build/
+dist/
+*.egg-info/
+
+# ==========================
+# Archivos temporales
+# ==========================
+*.tmp
+*.temp
+*.bak
+
+# ==========================
+# JetBrains
+# ==========================
+.idea/
+
+# ==========================
+# Railway
+# ==========================
+.railway/
+
+# ==========================
+# Uploads (opcional)
+# ==========================
+# Si las imágenes las subirán los usuarios y
+# NO quieres almacenarlas en Git, descomenta:
+#
+# backend/app/static/uploads/
+#
+# Si deseas conservar imágenes de prueba,
+# deja esta línea comentada.

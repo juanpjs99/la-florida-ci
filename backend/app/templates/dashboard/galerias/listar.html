@@ -1,0 +1,162 @@
+{% extends "dashboard/layout.html" %}
+
+{% block title %}Galerías{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <h2>Galerías</h2>
+
+        <a
+            href="{{ url_for('galeria.mostrar_crear') }}"
+            class="btn btn-primary">
+
+            Nueva galería
+
+        </a>
+
+    </div>
+
+    <div class="card shadow-sm">
+
+        <div class="card-body">
+
+            <table class="table table-hover align-middle">
+
+                <thead class="table-light">
+
+                    <tr>
+
+                        <th width="130">Portada</th>
+                        <th>Título</th>
+                        <th>Estado</th>
+                        <th>Fecha</th>
+                        <th width="250">Acciones</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                {% for galeria in galerias %}
+
+                    <tr>
+
+                        <td>
+
+                            {% if galeria.portada %}
+
+                                <img
+                                    src="{{ url_for('static', filename='uploads/galerias/' ~ galeria.portada) }}"
+                                    alt="{{ galeria.titulo }}"
+                                    class="img-thumbnail"
+                                    style="width:100px;height:70px;object-fit:cover;"
+                                    onerror="this.style.display='none';">
+
+                            {% else %}
+
+                                <span class="text-muted">
+                                    Sin portada
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                        <td>
+
+                            <strong>{{ galeria.titulo }}</strong>
+
+                            {% if galeria.descripcion %}
+                                <br>
+                                <small class="text-muted">
+                                    {{ galeria.descripcion[:80] }}{% if galeria.descripcion|length > 80 %}...{% endif %}
+                                </small>
+                            {% endif %}
+
+                        </td>
+
+                        <td>
+
+                            {% if galeria.estado == 'ACTIVA' %}
+
+                                <span class="badge bg-success">
+                                    Activa
+                                </span>
+
+                            {% else %}
+
+                                <span class="badge bg-secondary">
+                                    Oculta
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                        <td>
+
+                            {{ galeria.created_at }}
+
+                        </td>
+
+                        <td>
+
+                            <a
+                                href="{{ url_for('galeria.editar', id=galeria.id) }}"
+                                class="btn btn-warning btn-sm">
+
+                                Editar
+
+                            </a>
+
+                            <a
+                                href="#"
+                                class="btn btn-info btn-sm">
+
+                                Imágenes
+
+                            </a>
+
+                            <a
+                                href="{{ url_for('galeria.eliminar', id=galeria.id) }}"
+                                class="btn btn-danger btn-sm"
+                                onclick="return confirm('¿Desea eliminar esta galería?');">
+
+                                Eliminar
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                {% else %}
+
+                    <tr>
+
+                        <td colspan="5" class="text-center text-muted py-4">
+
+                            No hay galerías registradas.
+
+                        </td>
+
+                    </tr>
+
+                {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

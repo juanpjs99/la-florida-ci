@@ -72,7 +72,7 @@ class AuthController:
 
 
         # Redireccionar
-        return redirect(url_for("dashboard"))
+        return redirect(url_for("dashboard.index"))
 
 
 
