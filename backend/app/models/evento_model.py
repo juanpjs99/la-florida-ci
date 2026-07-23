@@ -39,6 +39,14 @@ class EventoModel:
         return eventos
 
     @staticmethod
+    def contar():
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT COUNT(*) FROM eventos")
+        count = cursor.fetchone()[0]
+        cursor.close()
+        return count
+
+    @staticmethod
     def guardar(
         usuario_id,
         titulo,

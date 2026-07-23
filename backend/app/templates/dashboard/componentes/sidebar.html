@@ -16,24 +16,21 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link {% if request.path.startswith('/dashboard/noticias') %}active{% endif %}" href="#">
-                    <!-- TODO: reemplazar href con url_for('noticias.index') -->
+                <a class="nav-link {% if request.path.startswith('/dashboard/noticias') %}active{% endif %}" href="{{ url_for('noticia.listar') }}">
                     <i class="bi bi-newspaper"></i>
                     Noticias
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link {% if request.path.startswith('/dashboard/eventos') %}active{% endif %}" href="#">
-                    <!-- TODO: reemplazar href con url_for('eventos.index') -->
+                <a class="nav-link {% if request.path.startswith('/dashboard/eventos') %}active{% endif %}" href="{{ url_for('evento.listar') }}">
                     <i class="bi bi-calendar-event"></i>
                     Eventos
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link {% if request.path.startswith('/dashboard/galeria') %}active{% endif %}" href="#">
-                    <!-- TODO: reemplazar href con url_for('galeria.index') -->
+                <a class="nav-link {% if request.path.startswith('/dashboard/galeria') %}active{% endif %}" href="{{ url_for('galeria.listar') }}">
                     <i class="bi bi-images"></i>
                     Galería
                 </a>

@@ -5,6 +5,9 @@
 {% block content %}
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/galerias.css') }}">
+<style>
+.cursor-pointer { cursor: pointer; }
+</style>
 
 <a href="{{ url_for('galeria.listar') }}" class="galerias-back-link mb-3">
     <i class="bi bi-arrow-left"></i>
@@ -109,9 +112,10 @@
 
                 <img
                     src="{{ url_for('static', filename='uploads/galeria_imagenes/' ~ imagen.ruta_imagen) }}"
-                    class="card-img-top"
+                    class="card-img-top cursor-pointer"
                     style="height:220px; object-fit:cover;"
-                    alt="Imagen">
+                    alt="Imagen"
+                    onclick="mostrarPreview('{{ url_for('static', filename='uploads/galeria_imagenes/' ~ imagen.ruta_imagen) }}', '{{ imagen.descripcion or imagen.titulo }}')">
 
                 <div class="card-body text-center">
 
@@ -160,7 +164,27 @@
 
 </div>
 
+<div class="modal fade" id="previewModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <h5 class="modal-title" id="previewModalTitle"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body text-center p-0">
+                <img id="previewModalImage" src="" class="img-fluid" style="max-height:80vh; object-fit:contain;">
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
+
+function mostrarPreview(src, titulo) {
+    document.getElementById('previewModalImage').src = src;
+    document.getElementById('previewModalTitle').textContent = titulo || 'Vista previa';
+    new bootstrap.Modal(document.getElementById('previewModal')).show();
+}
 
 const inputImagenes = document.getElementById("imagenes");
 const previewContainer = document.getElementById("preview-container");

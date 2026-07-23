@@ -1,4 +1,7 @@
 from flask import Blueprint, render_template, session, redirect, url_for
+from app.models.noticia_model import NoticiaModel
+from app.models.evento_model import EventoModel
+from app.models.galeria_model import GaleriaModel
 
 dashboard = Blueprint(
     "dashboard",
@@ -14,9 +17,9 @@ def index():
         return redirect(url_for("auth.mostrar_login"))
 
     stats = {
-        "noticias": 0,
-        "eventos": 0,
-        "galerias": 0
+        "noticias": NoticiaModel.contar(),
+        "eventos": EventoModel.contar(),
+        "galeria": GaleriaModel.contar()
     }
 
     return render_template(

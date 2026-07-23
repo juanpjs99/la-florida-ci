@@ -30,8 +30,7 @@ Dashboard
             <div class="card-body">
                 <div class="stat-label">Noticias</div>
                 <div class="stat-number">
-                    {{ stats.noticias or 0 }}
-                    <!-- TODO: reemplazar con variable real del backend -->
+                    {{ stats.noticias }}
                 </div>
             </div>
         </div>
@@ -42,8 +41,7 @@ Dashboard
             <div class="card-body">
                 <div class="stat-label">Eventos</div>
                 <div class="stat-number">
-                    {{ stats.eventos or 0 }}
-                    <!-- TODO: reemplazar con variable real del backend -->
+                    {{ stats.eventos }}
                 </div>
             </div>
         </div>
@@ -54,8 +52,7 @@ Dashboard
             <div class="card-body">
                 <div class="stat-label">Galería</div>
                 <div class="stat-number">
-                    {{ stats.galeria or 0 }}
-                    <!-- TODO: reemplazar con variable real del backend -->
+                    {{ stats.galeria }}
                 </div>
             </div>
         </div>
@@ -70,8 +67,7 @@ Dashboard
     <!-- ──── Noticias ──── -->
     <div class="col-md-4">
 
-        <a href="#" class="dashboard-card card-noticias">
-            <!-- TODO: reemplazar href con url_for('noticias.index') -->
+        <a href="{{ url_for('noticia.listar') }}" class="dashboard-card card-noticias">
 
             <div class="card">
                 <div class="card-body">
@@ -88,8 +84,7 @@ Dashboard
 
                     <span class="card-badge">
                         <i class="bi bi-file-text"></i>
-                        {{ stats.noticias or 0 }} artículos
-                        <!-- TODO: conectar con contador real del backend -->
+                        {{ stats.noticias }} artículos
                     </span>
 
                 </div>
@@ -103,8 +98,7 @@ Dashboard
     <!-- ──── Eventos ──── -->
     <div class="col-md-4">
 
-        <a href="#" class="dashboard-card card-eventos">
-            <!-- TODO: reemplazar href con url_for('eventos.index') -->
+        <a href="{{ url_for('evento.listar') }}" class="dashboard-card card-eventos">
 
             <div class="card">
                 <div class="card-body">
@@ -121,8 +115,7 @@ Dashboard
 
                     <span class="card-badge">
                         <i class="bi bi-calendar-week"></i>
-                        {{ stats.eventos or 0 }} eventos
-                        <!-- TODO: conectar con contador real del backend -->
+                        {{ stats.eventos }} eventos
                     </span>
 
                 </div>
@@ -136,8 +129,7 @@ Dashboard
     <!-- ──── Galería ──── -->
     <div class="col-md-4">
 
-        <a href="#" class="dashboard-card card-galeria">
-            <!-- TODO: reemplazar href con url_for('galeria.index') -->
+        <a href="{{ url_for('galeria.listar') }}" class="dashboard-card card-galeria">
 
             <div class="card">
                 <div class="card-body">
@@ -154,8 +146,7 @@ Dashboard
 
                     <span class="card-badge">
                         <i class="bi bi-image"></i>
-                        {{ stats.galeria or 0 }} imágenes
-                        <!-- TODO: conectar con contador real del backend -->
+                        {{ stats.galeria }} imágenes
                     </span>
 
                 </div>

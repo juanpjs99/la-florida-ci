@@ -30,6 +30,14 @@ class GaleriaModel:
         return galerias
 
     @staticmethod
+    def contar():
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT COUNT(*) FROM galerias")
+        count = cursor.fetchone()[0]
+        cursor.close()
+        return count
+
+    @staticmethod
     def obtener_por_id(id):
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
 

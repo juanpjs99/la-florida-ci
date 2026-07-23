@@ -36,6 +36,14 @@ class NoticiaModel:
 
         return noticias
 
+    @staticmethod
+    def contar():
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT COUNT(*) FROM noticias")
+        count = cursor.fetchone()[0]
+        cursor.close()
+        return count
+
 
     @staticmethod
     def guardar(
