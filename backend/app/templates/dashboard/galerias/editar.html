@@ -14,99 +14,153 @@
     <h2 class="mb-1">
         <i class="bi bi-pencil-square me-2"></i>Editar Galería
     </h2>
-    <p class="subtitle mb-0">Modifica los campos que deseas actualizar</p>
+    <p class="subtitle mb-0">
+        Modifica los campos que deseas actualizar
+    </p>
 </div>
 
 <div class="card galerias-form-card">
+
     <div class="card-body">
 
-        <form action="{{ url_for('galeria.actualizar', id=galeria.id) }}"
-              method="POST"
-              enctype="multipart/form-data">
+        <form
+            action="{{ url_for('galeria.actualizar', id=galeria.id) }}"
+            method="POST"
+            enctype="multipart/form-data">
 
             <div class="form-group-galeria">
+
                 <label for="titulo">Título</label>
-                <input type="text"
-                       name="titulo"
-                       id="titulo"
-                       class="form-control-galeria"
-                       value="{{ galeria.titulo }}"
-                       required>
+
+                <input
+                    type="text"
+                    name="titulo"
+                    id="titulo"
+                    class="form-control-galeria"
+                    value="{{ galeria.titulo }}"
+                    required>
+
             </div>
 
             <div class="form-group-galeria">
+
                 <label for="descripcion">Descripción</label>
-                <textarea name="descripcion"
-                          id="descripcion"
-                          class="form-control-galeria"
-                          rows="5">{{ galeria.descripcion }}</textarea>
+
+                <textarea
+                    name="descripcion"
+                    id="descripcion"
+                    class="form-control-galeria"
+                    rows="5">{{ galeria.descripcion }}</textarea>
+
             </div>
 
             <div class="form-group-galeria">
+
                 <label>Portada actual</label>
 
                 {% if galeria.portada %}
 
-                <div class="portada-actual mb-2">
-                    <img src="{{ url_for('static', filename='uploads/galerias/' ~ galeria.portada) }}"
-                         alt="{{ galeria.titulo }}">
-                </div>
+                    <div class="portada-actual mb-2">
+
+                        <img
+                            src="{{ url_for('static', filename='uploads/galerias/' ~ galeria.portada) }}"
+                            alt="{{ galeria.titulo }}">
+
+                    </div>
 
                 {% else %}
 
-                <p class="text-muted small mb-2">
-                    <i class="bi bi-image me-1"></i>Esta galería no tiene portada.
-                </p>
+                    <p class="text-muted small mb-2">
+                        <i class="bi bi-image me-1"></i>
+                        Esta galería no tiene portada.
+                    </p>
 
                 {% endif %}
+
             </div>
 
             <div class="form-group-galeria">
+
                 <label for="portada">Cambiar portada</label>
+
                 <div class="form-file-galeria">
-                    <input type="file"
-                           name="portada"
-                           id="portada"
-                           accept="image/*">
+
+                    <input
+                        type="file"
+                        name="portada"
+                        id="portada"
+                        accept="image/*">
+
                     <div class="file-label">
+
                         <i class="bi bi-image"></i>
-                        <span>Seleccionar nueva imagen de portada</span>
+
+                        <span>
+                            Seleccionar nueva imagen de portada
+                        </span>
+
                     </div>
+
                 </div>
+
                 <small class="file-hint">
                     Si no seleccionas una imagen, se conservará la portada actual.
                 </small>
+
             </div>
 
             <div class="form-group-galeria">
+
                 <label for="estado">Estado</label>
-                <select name="estado" id="estado" class="form-control-galeria">
-                    <option value="ACTIVO"
-                            {% if galeria.estado == 'ACTIVO' %}selected{% endif %}>
-                        Activo
+
+                <select
+                    name="estado"
+                    id="estado"
+                    class="form-control-galeria">
+
+                    <option
+                        value="ACTIVA"
+                        {% if galeria.estado == 'ACTIVA' %}selected{% endif %}>
+                        Activa
                     </option>
-                    <option value="INACTIVO"
-                            {% if galeria.estado == 'INACTIVO' %}selected{% endif %}>
+
+                    <option
+                        value="OCULTA"
+                        {% if galeria.estado == 'OCULTA' %}selected{% endif %}>
                         Oculta
                     </option>
+
                 </select>
+
             </div>
 
             <div class="form-actions-galeria">
-                <a href="{{ url_for('galeria.listar') }}"
-                   class="btn-cancelar">
-                    <i class="bi bi-x-lg"></i> Cancelar
+
+                <a
+                    href="{{ url_for('galeria.listar') }}"
+                    class="btn-cancelar">
+
+                    <i class="bi bi-x-lg"></i>
+                    Cancelar
+
                 </a>
-                <button type="submit"
-                        class="btn-submit-galeria"
-                        style="width:auto;">
-                    <i class="bi bi-check2-circle"></i> Actualizar galería
+
+                <button
+                    type="submit"
+                    class="btn-submit-galeria"
+                    style="width:auto;">
+
+                    <i class="bi bi-check2-circle"></i>
+                    Actualizar Galería
+
                 </button>
+
             </div>
 
         </form>
 
     </div>
+
 </div>
 
 {% endblock %}
