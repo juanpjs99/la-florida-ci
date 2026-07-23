@@ -10,6 +10,7 @@ from app.routes.admin.noticia_routes import noticia
 from app.routes.admin.evento_routes import evento
 from app.routes.admin.galeria_routes import galeria
 from app.routes.admin.galeria_imagen_routes import galeria_imagen_bp
+from app.routes.web.web_routes import web_bp
 
 
 app = Flask(
@@ -29,11 +30,11 @@ app.register_blueprint(noticia)
 app.register_blueprint(evento)
 app.register_blueprint(galeria)
 app.register_blueprint(galeria_imagen_bp)
-
+app.register_blueprint(web_bp)
 
 @app.route("/")
 def home():
-    return "Backend La Florida CI"
+    return web_bp.render_template("web/index.html")
 
 
 @app.route("/test-db")

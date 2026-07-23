@@ -97,7 +97,7 @@ class NoticiaModel:
 
         mysql.connection.commit()
         cursor.close()
-    
+
 
     @staticmethod
     def obtener_por_id(noticia_id):
@@ -113,6 +113,7 @@ class NoticiaModel:
                 n.titulo,
                 n.resumen,
                 n.contenido,
+                n.imagen,
                 n.estado,
                 n.fecha_publicacion,
                 n.created_at,
@@ -131,8 +132,7 @@ class NoticiaModel:
         cursor.close()
 
         return noticia
-    
-    ##################33
+
 
     @staticmethod
     def actualizar(
@@ -174,7 +174,7 @@ class NoticiaModel:
 
         cursor.close()
 
-    ## modelo de eliminar noticia
+
     @staticmethod
     def eliminar(noticia_id):
         """
@@ -192,4 +192,38 @@ class NoticiaModel:
 
         mysql.connection.commit()
 
-        cursor.close()  
+        cursor.close()
+
+
+    # ==========================================================
+    # PORTAL WEB
+    # ==========================================================
+
+    @staticmethod
+    def obtener_recientes(limit=5):
+        """
+        Obtiene las noticias publicadas más recientes para el portal web.
+        """
+
+        cursor = mysql.connection.cursor(DictCursor)
+
+        query = """
+            SELECT
+                id,
+                titulo,
+                resumen,
+                imagen,
+                fecha_publicacion
+            FROM noticias
+            WHERE estado = 'PUBLICADA'
+            ORDER BY fecha_publicacion DESC
+            LIMIT %s
+        """
+
+        cursor.execute(query, (limit,))
+
+        noticias = cursor.fetchall()
+
+        cursor.close()
+
+        return noticias

@@ -1,6 +1,8 @@
 import MySQLdb.cursors
 
 from app.database.db import mysql
+from app.database.db import mysql
+from MySQLdb.cursors import DictCursor
 
 
 class GaleriaImagenModel:
@@ -95,3 +97,32 @@ class GaleriaImagenModel:
         mysql.connection.commit()
 
         cursor.close()
+
+
+    # ==========================================================
+# PORTAL WEB
+# ==========================================================
+
+    @staticmethod
+    def obtener_publicas_por_galeria(galeria_id):
+
+        cursor = mysql.connection.cursor(DictCursor)
+
+        query = """
+            SELECT
+                id,
+                ruta_imagen,
+                descripcion,
+                orden
+            FROM galeria_imagenes
+            WHERE galeria_id = %s
+            ORDER BY orden ASC, created_at ASC
+        """
+
+        cursor.execute(query, (galeria_id,))
+
+        imagenes = cursor.fetchall()
+
+        cursor.close()
+
+        return imagenes

@@ -1,0 +1,363 @@
+/* ==========================================================
+   VARIABLES
+========================================================== */
+
+:root{
+
+    --primary:#2E8B57;
+    --primary-dark:#1f6c42;
+    --secondary:#FFC107;
+
+    --text:#2d3436;
+
+    --gray:#6c757d;
+
+    --light:#f8f9fa;
+
+    --white:#ffffff;
+
+    --shadow:0 15px 35px rgba(0,0,0,.08);
+
+    --radius:18px;
+
+}
+
+/* ==========================================================
+   GENERAL
+========================================================== */
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    font-family:"Segoe UI",sans-serif;
+
+    color:var(--text);
+
+    background:#fff;
+
+    overflow-x:hidden;
+
+}
+
+section{
+
+    padding:90px 0;
+
+}
+
+img{
+
+    max-width:100%;
+
+}
+
+/* ==========================================================
+   NAVBAR
+========================================================== */
+
+.navbar{
+
+    transition:.3s;
+
+    padding:16px 0;
+
+}
+
+.navbar-brand{
+
+    font-size:1.4rem;
+
+    color:var(--primary)!important;
+
+}
+
+.nav-link{
+
+    color:#444!important;
+
+    font-weight:500;
+
+    margin-left:15px;
+
+    transition:.3s;
+
+}
+
+.nav-link:hover{
+
+    color:var(--primary)!important;
+
+}
+
+/* ==========================================================
+   HERO
+========================================================== */
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    background:linear-gradient(
+
+        135deg,
+
+        #f5fff8,
+
+        #ffffff
+
+    );
+
+}
+
+.hero-badge{
+
+    display:inline-block;
+
+    padding:8px 20px;
+
+    border-radius:50px;
+
+    background:#dff5e7;
+
+    color:var(--primary);
+
+    font-weight:600;
+
+}
+
+.hero-title{
+
+    font-size:3.3rem;
+
+    font-weight:700;
+
+    line-height:1.2;
+
+}
+
+.hero-text{
+
+    font-size:1.15rem;
+
+    color:#666;
+
+    line-height:1.8;
+
+}
+
+.hero-buttons .btn{
+
+    padding:14px 30px;
+
+    border-radius:40px;
+
+}
+
+.hero-image{
+
+    animation:float 4s ease-in-out infinite;
+
+}
+
+/* ==========================================================
+   BOTONES
+========================================================== */
+
+.btn-success{
+
+    background:var(--primary);
+
+    border:none;
+
+}
+
+.btn-success:hover{
+
+    background:var(--primary-dark);
+
+}
+
+.btn-outline-success{
+
+    color:var(--primary);
+
+    border-color:var(--primary);
+
+}
+
+.btn-outline-success:hover{
+
+    background:var(--primary);
+
+}
+
+/* ==========================================================
+   TITULOS
+========================================================== */
+
+section h2{
+
+    font-weight:700;
+
+    margin-bottom:20px;
+
+}
+
+section p{
+
+    color:#666;
+
+    line-height:1.8;
+
+}
+
+/* ==========================================================
+   TARJETAS
+========================================================== */
+
+.card{
+
+    border:none;
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+    transition:.35s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-10px);
+
+}
+
+/* ==========================================================
+   FOOTER
+========================================================== */
+
+footer{
+
+    background:#222;
+
+}
+
+footer h4,
+
+footer h5{
+
+    margin-bottom:20px;
+
+}
+
+footer a{
+
+    transition:.3s;
+
+}
+
+footer a:hover{
+
+    color:#fff!important;
+
+    padding-left:5px;
+
+}
+
+/* ==========================================================
+   ANIMACION HERO
+========================================================== */
+
+@keyframes float{
+
+    0%{
+
+        transform:translateY(0px);
+
+    }
+
+    50%{
+
+        transform:translateY(-15px);
+
+    }
+
+    100%{
+
+        transform:translateY(0px);
+
+    }
+
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media(max-width:992px){
+
+    .hero{
+
+        text-align:center;
+
+        padding-top:80px;
+
+    }
+
+    .hero-title{
+
+        font-size:2.4rem;
+
+    }
+
+    .hero-image{
+
+        margin-top:50px;
+
+        max-width:450px;
+
+    }
+
+}
+
+@media(max-width:576px){
+
+    section{
+
+        padding:70px 0;
+
+    }
+
+    .hero-title{
+
+        font-size:2rem;
+
+    }
+
+    .hero-buttons .btn{
+
+        width:100%;
+
+        margin-bottom:15px;
+
+    }
+
+}

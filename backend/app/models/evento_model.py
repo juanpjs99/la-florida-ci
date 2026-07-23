@@ -194,3 +194,39 @@ class EventoModel:
         mysql.connection.commit()
 
         cursor.close()
+
+    # ==========================================================
+    # PORTAL WEB
+    # ==========================================================
+
+    @staticmethod
+    def obtener_proximos(limit=5):
+        """
+        Obtiene los próximos eventos para el portal web.
+        """
+
+        cursor = mysql.connection.cursor(DictCursor)
+
+        query = """
+            SELECT
+                id,
+                titulo,
+                descripcion,
+                imagen,
+                lugar,
+                fecha_evento,
+                hora_evento
+            FROM eventos
+            WHERE estado = 'ACTIVO'
+              AND fecha_evento >= CURDATE()
+            ORDER BY fecha_evento ASC
+            LIMIT %s
+        """
+
+        cursor.execute(query, (limit,))
+
+        eventos = cursor.fetchall()
+
+        cursor.close()
+
+        return eventos

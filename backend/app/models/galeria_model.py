@@ -118,3 +118,36 @@ class GaleriaModel:
         cursor.execute(sql, (id,))
         mysql.connection.commit()
         cursor.close()
+
+    # ==========================================================
+    # PORTAL WEB
+    # ==========================================================
+
+    @staticmethod
+    def obtener_publicas(limit=6):
+        """
+        Obtiene las galerías activas para el portal web.
+        """
+
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+
+        sql = """
+            SELECT
+                id,
+                titulo,
+                descripcion,
+                portada,
+                created_at
+            FROM galerias
+            WHERE estado = 'ACTIVA'
+            ORDER BY created_at DESC
+            LIMIT %s
+        """
+
+        cursor.execute(sql, (limit,))
+
+        galerias = cursor.fetchall()
+
+        cursor.close()
+
+        return galerias
