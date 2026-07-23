@@ -9,6 +9,7 @@ from app.routes.dashboard_routes import dashboard
 from app.routes.admin.noticia_routes import noticia
 from app.routes.admin.evento_routes import evento
 from app.routes.admin.galeria_routes import galeria
+from app.routes.admin.galeria_imagen_routes import galeria_imagen_bp
 
 
 app = Flask(
@@ -27,6 +28,7 @@ app.register_blueprint(dashboard)
 app.register_blueprint(noticia)
 app.register_blueprint(evento)
 app.register_blueprint(galeria)
+app.register_blueprint(galeria_imagen_bp)
 
 
 @app.route("/")

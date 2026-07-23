@@ -77,19 +77,23 @@
 
                 <td>
                     <div class="acciones-wrapper">
+
                         <a href="{{ url_for('galeria.editar', id=galeria.id) }}"
                            class="btn-action btn-editar">
                             <i class="bi bi-pencil-square"></i> Editar
                         </a>
-                        <a href="#"
+
+                        <a href="{{ url_for('galeria_imagen.listar', galeria_id=galeria.id) }}"
                            class="btn-action btn-imagenes">
                             <i class="bi bi-images"></i> Imágenes
                         </a>
+
                         <a href="{{ url_for('galeria.eliminar', id=galeria.id) }}"
                            class="btn-action btn-eliminar"
                            onclick="return confirm('¿Desea eliminar esta galería?');">
                             <i class="bi bi-trash3"></i> Eliminar
                         </a>
+
                     </div>
                 </td>
 

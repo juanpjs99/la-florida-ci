@@ -1,0 +1,229 @@
+{% extends "dashboard/layout.html" %}
+
+{% block title %}Imágenes de la Galería{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/galerias.css') }}">
+
+<a href="{{ url_for('galeria.listar') }}" class="galerias-back-link mb-3">
+    <i class="bi bi-arrow-left"></i>
+    Volver a Galerías
+</a>
+
+<div class="galerias-form-header mb-4">
+
+    <h2 class="mb-1">
+        <i class="bi bi-images me-2"></i>
+        {{ galeria.titulo }}
+    </h2>
+
+    <p class="subtitle mb-0">
+        Administra las imágenes de esta galería.
+    </p>
+
+</div>
+
+<div class="card galerias-form-card mb-4">
+
+    <div class="card-body">
+
+        <form
+            action="{{ url_for('galeria_imagen.subir', galeria_id=galeria.id) }}"
+            method="POST"
+            enctype="multipart/form-data">
+
+            <div class="form-group-galeria">
+
+                <label for="imagenes">
+                    Seleccionar imágenes
+                </label>
+
+                <div class="form-file-galeria">
+
+                    <input
+                        type="file"
+                        id="imagenes"
+                        name="imagenes"
+                        accept="image/*"
+                        multiple
+                        required>
+
+                    <div class="file-label">
+
+                        <i class="bi bi-cloud-upload"></i>
+
+                        <span>
+                            Seleccionar una o varias imágenes
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <small class="file-hint">
+                    Puedes seleccionar varias fotografías al mismo tiempo.
+                </small>
+
+            </div>
+
+            <!-- Vista previa -->
+            <div id="preview-container" class="row mt-4"></div>
+
+            <div class="form-actions-galeria mt-4">
+
+                <button
+                    type="submit"
+                    class="btn-submit-galeria"
+                    style="width:auto;">
+
+                    <i class="bi bi-upload"></i>
+                    Subir imágenes
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<hr class="my-5">
+
+<h4 class="mb-4">
+    <i class="bi bi-collection"></i>
+    Imágenes cargadas
+</h4>
+
+<div class="row">
+
+    {% if imagenes %}
+
+        {% for imagen in imagenes %}
+
+        <div class="col-md-4 col-lg-3 mb-4">
+
+            <div class="card h-100 shadow-sm">
+
+                <img
+                    src="{{ url_for('static', filename='uploads/galeria_imagenes/' ~ imagen.ruta_imagen) }}"
+                    class="card-img-top"
+                    style="height:220px; object-fit:cover;"
+                    alt="Imagen">
+
+                <div class="card-body text-center">
+
+                    {% if imagen.descripcion %}
+
+                        <p class="small text-muted">
+                            {{ imagen.descripcion }}
+                        </p>
+
+                    {% endif %}
+
+                    <a
+                        href="{{ url_for('galeria_imagen.eliminar', id=imagen.id) }}"
+                        class="btn btn-danger btn-sm"
+                        onclick="return confirm('¿Eliminar esta imagen?')">
+
+                        <i class="bi bi-trash"></i>
+
+                        Eliminar
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <div class="col-12">
+
+            <div class="alert alert-info text-center">
+
+                <i class="bi bi-image"></i>
+
+                Esta galería aún no tiene imágenes.
+
+            </div>
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+<script>
+
+const inputImagenes = document.getElementById("imagenes");
+const previewContainer = document.getElementById("preview-container");
+
+inputImagenes.addEventListener("change", function () {
+
+    previewContainer.innerHTML = "";
+
+    const archivos = this.files;
+
+    if (!archivos.length) return;
+
+    Array.from(archivos).forEach((archivo) => {
+
+        if (!archivo.type.startsWith("image/")) return;
+
+        const reader = new FileReader();
+
+        reader.onload = function(e){
+
+            const columna = document.createElement("div");
+
+            columna.className = "col-md-4 col-lg-3 mb-4";
+
+            columna.innerHTML = `
+
+                <div class="card h-100 border-primary shadow-sm">
+
+                    <img
+                        src="${e.target.result}"
+                        class="card-img-top"
+                        style="height:220px; object-fit:cover;">
+
+                    <div class="card-body text-center">
+
+                        <span class="badge bg-success mb-2">
+
+                            Vista previa
+
+                        </span>
+
+                        <div class="small text-muted">
+
+                            ${archivo.name}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            `;
+
+            previewContainer.appendChild(columna);
+
+        }
+
+        reader.readAsDataURL(archivo);
+
+    });
+
+});
+
+</script>
+
+{% endblock %}
