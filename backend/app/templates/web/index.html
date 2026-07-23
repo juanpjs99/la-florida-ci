@@ -159,7 +159,7 @@ Inicio | Hogar Infantil La Florida
                         {% if noticia.imagen %}
 
                         <img
-                            src="{{ url_for('static', filename=noticia.imagen) }}"
+                            src="{{ url_for('static', filename='uploads/noticias/' ~ noticia.imagen) }}"
                             class="card-img-top"
                             alt="{{ noticia.titulo }}">
 
@@ -264,7 +264,7 @@ Inicio | Hogar Infantil La Florida
                         {% if evento.imagen %}
 
                         <img
-                            src="{{ url_for('static', filename=evento.imagen) }}"
+                            src="{{ url_for('static', filename='uploads/eventos/' ~ evento.imagen) }}"
                             class="card-img-top"
                             alt="{{ evento.titulo }}">
 
@@ -359,7 +359,7 @@ Inicio | Hogar Infantil La Florida
                         {% if galeria.portada %}
 
                         <img
-                            src="{{ url_for('static', filename=galeria.portada) }}"
+                            src="{{ url_for('static', filename='uploads/galerias/' ~ galeria.portada) }}"
                             class="card-img-top"
                             alt="{{ galeria.titulo }}">
 
@@ -388,8 +388,8 @@ Inicio | Hogar Infantil La Florida
 
                             <div class="mt-auto">
 
-                                <a href="#"
-                                    class="btn btn-outline-success">
+                                <a class="btn btn-outline-success btn-galeria"
+                                    data-id="{{ galeria.id }}">
 
                                     Ver galería
 
@@ -455,5 +455,51 @@ Inicio | Hogar Infantil La Florida
     </div>
 
 </section>
+<!-- ========================================= -->
+<!-- MODAL GALERÍA -->
+<!-- ========================================= -->
 
+<div
+    class="modal fade"
+    id="modalGaleria"
+    tabindex="-1"
+    aria-hidden="true">
+
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h4
+                    class="modal-title"
+                    id="tituloGaleria">
+
+                    Galería
+
+                </h4>
+
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <div
+                    id="contenidoGaleria"
+                    class="row g-3">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 {% endblock %}

@@ -126,3 +126,25 @@ class GaleriaImagenModel:
         cursor.close()
 
         return imagenes
+
+    @staticmethod
+    def obtener_por_galeria(galeria_id):
+
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+
+        cursor.execute("""
+            SELECT
+                id,
+                ruta_imagen,
+                descripcion,
+                orden
+            FROM galeria_imagenes
+            WHERE galeria_id = %s
+            ORDER BY orden ASC, id ASC
+        """, (galeria_id,))
+
+        imagenes = cursor.fetchall()
+
+        cursor.close()
+
+        return imagenes

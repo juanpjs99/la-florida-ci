@@ -17,3 +17,7 @@ web_bp = Blueprint(
 def inicio():
 
     return WebController.inicio()
+
+@web_bp.route("/galeria/<int:galeria_id>/imagenes")
+def obtener_imagenes(galeria_id):
+    return WebController.obtener_imagenes(galeria_id)

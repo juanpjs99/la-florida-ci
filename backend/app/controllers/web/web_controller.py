@@ -3,6 +3,8 @@ from flask import render_template
 from app.models.noticia_model import NoticiaModel
 from app.models.evento_model import EventoModel
 from app.models.galeria_model import GaleriaModel
+from flask import jsonify
+from app.models.galeria_imagen_model import GaleriaImagenModel
 
 
 class WebController:
@@ -25,3 +27,10 @@ class WebController:
             eventos=eventos,
             galerias=galerias
         )
+
+    @staticmethod
+    def obtener_imagenes(galeria_id):
+
+        imagenes = GaleriaImagenModel.obtener_por_galeria(galeria_id)
+
+        return jsonify(imagenes)
